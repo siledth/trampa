@@ -1,0 +1,25 @@
+CREATE TABLE seguridad.usuarios (
+	id serial4 NOT NULL,
+	cedula varchar(50) NULL,
+	email varchar(50) NOT NULL,
+	nombre varchar(30) NULL,
+	apellido varchar(30) NULL,
+	"password" text NULL,
+	rif varchar(10) NULL,
+	tele_1 varchar(20) NULL,
+	perfil int4 NULL,
+	foto text NULL,
+	intentos int4 NULL,
+	id_estatus int4 NULL,
+	fecha timestamp NULL,
+	fecha_update timestamp NULL,
+	CONSTRAINT usuarios_pkey PRIMARY KEY (id)
+);
+
+luis.molero80@gmail.com
+$2y$10$.Xif7vd9D9pRPkv.grUxtuG8N..Lk48VWg4v78AIqfqH4r8bxWRS.
+J413233010
+
+admin@gmail.com
+$2y$10$HvFKI0m6jBZ9By41W0O4A.peZrP1DJffhIg4O0hvFtJiuJAfqk3Yu
+J413233010

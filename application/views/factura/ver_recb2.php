@@ -91,16 +91,17 @@
                                 </table>
                             </div>
                             <div class="col-6"></div>
-                            <div class="form-group row col-6">
-
-                            </div>
+                          
                             <div class="col-6"></div>
-                            <div class="form-group row col-6">
-                                <h4>Total $ </h4>
-                                <input type="text" class="form-control text-center"
-                                    value="<?=$factura_ind['total_mas_iva']?>" readonly>
+                          
+                                    <div class="form-group col-6 float-right">
+                                    <h5><b>Trasferencia:Banco Provincial 0108-0034090100409149 CI 18110915 </b> </h5>
+                                    <h5><b>Pago Movil:Banco Provincial, CI 18110915, Tel 04143322413</b> </h5>
+                                    </div>
+                                    <div class="form-group col-6 float-right">
+                                      <h3><b>      Total $: <?=$factura_ind['total_mas_iva']?>$</b></h3>
                             </div>
-                            <div class="col-6"></div>
+                            
                         </div>
                     </div>
                     <div class="col-12">
@@ -191,19 +192,15 @@
                                 </table>
                             </div>
                             <div class="col-6"></div>
-                            <div class="form-group row col-6">
-                                <!-- <label class="col-form-label col-md-6 text-right" >Total IVA $ </h4>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control text-center" value="<?=$factura_ind['total_iva']?>" readonly>
-                            </div> -->
-                            </div>
                             <div class="col-6"></div>
-                            <div class="form-group row col-6">
-                                <h4>Total $ </h4>
-                                <input type="text" class="form-control text-center"
-                                    value="<?=$factura_ind['total_mas_iva']?>" readonly>
-                            </div>
-                            <div class="col-6"></div>
+                        
+                                  <div class="form-group col-6 float-right">
+                                  <h5><b>Trasferencia:Banco Provincial 0108-0034090100409149 CI 18110915 </b> </h5>
+                                  <h5><b>Pago Movil:Banco Provincial, CI 18110915, Tel 04143322413</b> </h5>
+                                  </div>
+                                  <div class="form-group col-6 float-right">
+                                    <h3><b>      Total $: <?=$factura_ind['total_mas_iva']?>$</b></h3>
+                          </div>
                         </div>
                     </div>
                 </div>

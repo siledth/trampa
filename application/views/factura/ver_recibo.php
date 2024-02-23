@@ -20,7 +20,6 @@
                                                 <th class="text-nowrap">Razón Social</th>
                                                 <th class="text-nowrap">Rif</th>
                                                 <th class="text-nowrap">Total $</th>
-                                                <th class="text-nowrap">Estatus</th>
                                                 <th class="text-nowrap">Acciones</th>
                                             </tr>
                                         </thead>
@@ -31,7 +30,6 @@
                                                     <td><?=$lista['nombre']?></td>                                                    
                                                     <td><?=$lista['cedula']?></td>
                                                     <td><?=$lista['total_mas_iva']?></td>
-                                                    <td><?=$lista['estatus']?></td>
                                                     <td>
                                                         <a class="button" href="<?php echo base_url() ?>index.php/Factura/ver_reci?id=<?php echo $lista['id'];?>" >
                                                             <i title="Ver" class="fas fa-lg fa-fw fa-list-alt" style="color: #00d41a;"></i>

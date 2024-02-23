@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://192.168.15.251/marina';
- $config['base_url'] = 'http://localhost/trampa';
+##$config['base_url'] = 'http://192.168.1.104/trampa';
+  $config['base_url'] = 'http://localhost/trampa';
 /*
 |--------------------------------------------------------------------------
 | Index File

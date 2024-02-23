@@ -143,7 +143,7 @@
                             <i class="fas fa-file-alt fa-lg"></i>
                             <span> Reporte</span>
                         </a>
-                        <ul class="sub-menu">
+                        <!-- <ul class="sub-menu">
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <li><a href="<?= base_url() ?>index.php/Reporte/ubicaci">Ubicacion</a></li>
@@ -165,7 +165,7 @@
                                     </li>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li class="has-sub">
                         <a href="javascript:;">
@@ -173,7 +173,7 @@
                             <i class="fas fa-chart-pie"></i>
                             <span> Gráficas</span>
                         </a>
-                        <ul class="sub-menu">
+                        <!-- <ul class="sub-menu">
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <li><a href="<?= base_url() ?>index.php/Reporte/tt_ing_egr">Totales Ingreso / Egresos</a></li>
@@ -181,7 +181,7 @@
                                     <li><a href="<?= base_url() ?>index.php/Reporte/f_tt_ing_tar">Ingreso por Facturas (Tarifas)</a></li>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                 <?php endif; ?>
                 <?php if ($this->session->userdata('perfil') == 3) : ?>

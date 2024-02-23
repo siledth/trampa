@@ -1,6 +1,6 @@
 $(document).ready(function(){
     //para consultar y crear el numero de factura
-    var base_url = window.location.origin+'/marina/index.php/Factura/cons_nro_factur';
+    var base_url = window.location.origin+'/trampa/index.php/Factura/cons_nro_factur';
 
     $.ajax({
         url: base_url,

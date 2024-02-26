@@ -5,7 +5,7 @@
 -- Dumped from database version 12.17 (Ubuntu 12.17-1.pgdg20.04+1)
 -- Dumped by pg_dump version 16.1 (Ubuntu 16.1-1.pgdg20.04+1)
 
--- Started on 2024-02-22 01:01:39 -04
+-- Started on 2024-02-25 21:12:30 -04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -29,7 +29,7 @@ CREATE SCHEMA public;
 ALTER SCHEMA public OWNER TO postgres;
 
 --
--- TOC entry 3284 (class 0 OID 0)
+-- TOC entry 3285 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
 --
@@ -101,7 +101,7 @@ CREATE SEQUENCE public.alicuota_iva_id_alicuota_iva_seq
 ALTER SEQUENCE public.alicuota_iva_id_alicuota_iva_seq OWNER TO postgres;
 
 --
--- TOC entry 3286 (class 0 OID 0)
+-- TOC entry 3287 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: alicuota_iva_id_alicuota_iva_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -140,7 +140,7 @@ CREATE SEQUENCE public.banco_id_banco_seq
 ALTER SEQUENCE public.banco_id_banco_seq OWNER TO postgres;
 
 --
--- TOC entry 3287 (class 0 OID 0)
+-- TOC entry 3288 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: banco_id_banco_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -198,7 +198,7 @@ CREATE SEQUENCE public.buque_id_seq
 ALTER SEQUENCE public.buque_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3288 (class 0 OID 0)
+-- TOC entry 3289 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: buque_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -244,7 +244,7 @@ CREATE SEQUENCE public.cliente_id_cliente_seq
 ALTER SEQUENCE public.cliente_id_cliente_seq OWNER TO postgres;
 
 --
--- TOC entry 3289 (class 0 OID 0)
+-- TOC entry 3290 (class 0 OID 0)
 -- Dependencies: 256
 -- Name: cliente_id_cliente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -403,7 +403,7 @@ CREATE SEQUENCE public.deta_factura_id_seq
 ALTER SEQUENCE public.deta_factura_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3290 (class 0 OID 0)
+-- TOC entry 3291 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: deta_factura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -426,7 +426,8 @@ CREATE TABLE public.deta_recibo (
     id_des character varying(50),
     t_desc character varying(100),
     total character varying(100),
-    id_fact integer
+    id_fact integer,
+    fecha_reg date DEFAULT now()
 );
 
 
@@ -477,7 +478,7 @@ CREATE SEQUENCE public.deta_recibo_id_seq
 ALTER SEQUENCE public.deta_recibo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3291 (class 0 OID 0)
+-- TOC entry 3292 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: deta_recibo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -516,7 +517,7 @@ CREATE SEQUENCE public.dolar_id_dolar_seq
 ALTER SEQUENCE public.dolar_id_dolar_seq OWNER TO postgres;
 
 --
--- TOC entry 3292 (class 0 OID 0)
+-- TOC entry 3293 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: dolar_id_dolar_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -602,7 +603,7 @@ CREATE SEQUENCE public.factura_id_seq
 ALTER SEQUENCE public.factura_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3293 (class 0 OID 0)
+-- TOC entry 3294 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: factura_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -642,7 +643,7 @@ CREATE SEQUENCE public.mensualidad_id_mensualidad_seq
 ALTER SEQUENCE public.mensualidad_id_mensualidad_seq OWNER TO postgres;
 
 --
--- TOC entry 3294 (class 0 OID 0)
+-- TOC entry 3295 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: mensualidad_id_mensualidad_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -698,7 +699,7 @@ CREATE SEQUENCE public.mov_consig_id_mov_consig_seq
 ALTER SEQUENCE public.mov_consig_id_mov_consig_seq OWNER TO postgres;
 
 --
--- TOC entry 3295 (class 0 OID 0)
+-- TOC entry 3296 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: mov_consig_id_mov_consig_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -777,7 +778,7 @@ CREATE SEQUENCE public.producto_id_producto_seq
 ALTER SEQUENCE public.producto_id_producto_seq OWNER TO postgres;
 
 --
--- TOC entry 3296 (class 0 OID 0)
+-- TOC entry 3297 (class 0 OID 0)
 -- Dependencies: 252
 -- Name: producto_id_producto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -822,7 +823,7 @@ CREATE SEQUENCE public.propiet_id_propiet_seq
 ALTER SEQUENCE public.propiet_id_propiet_seq OWNER TO postgres;
 
 --
--- TOC entry 3297 (class 0 OID 0)
+-- TOC entry 3298 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: propiet_id_propiet_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -904,7 +905,7 @@ CREATE SEQUENCE public.recibo_id_seq
 ALTER SEQUENCE public.recibo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3298 (class 0 OID 0)
+-- TOC entry 3299 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: recibo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -986,7 +987,7 @@ CREATE SEQUENCE public.tarifa_id_tarifa_seq
 ALTER SEQUENCE public.tarifa_id_tarifa_seq OWNER TO postgres;
 
 --
--- TOC entry 3299 (class 0 OID 0)
+-- TOC entry 3300 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: tarifa_id_tarifa_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1024,7 +1025,7 @@ CREATE SEQUENCE public.tipobarco_id_tipobarco_seq
 ALTER SEQUENCE public.tipobarco_id_tipobarco_seq OWNER TO postgres;
 
 --
--- TOC entry 3300 (class 0 OID 0)
+-- TOC entry 3301 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: tipobarco_id_tipobarco_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1062,7 +1063,7 @@ CREATE SEQUENCE public.tipocliente_id_tipocliente_seq
 ALTER SEQUENCE public.tipocliente_id_tipocliente_seq OWNER TO postgres;
 
 --
--- TOC entry 3301 (class 0 OID 0)
+-- TOC entry 3302 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: tipocliente_id_tipocliente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1100,7 +1101,7 @@ CREATE SEQUENCE public.tipoestac_id_tipoestac_seq
 ALTER SEQUENCE public.tipoestac_id_tipoestac_seq OWNER TO postgres;
 
 --
--- TOC entry 3302 (class 0 OID 0)
+-- TOC entry 3303 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: tipoestac_id_tipoestac_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1125,7 +1126,7 @@ CREATE SEQUENCE public.tipopago_id_tipo_pago_seq
 ALTER SEQUENCE public.tipopago_id_tipo_pago_seq OWNER TO postgres;
 
 --
--- TOC entry 3303 (class 0 OID 0)
+-- TOC entry 3304 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: tipopago_id_tipo_pago_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1205,7 +1206,7 @@ CREATE SEQUENCE public.tripulacion_id_tripulacion_seq
 ALTER SEQUENCE public.tripulacion_id_tripulacion_seq OWNER TO postgres;
 
 --
--- TOC entry 3304 (class 0 OID 0)
+-- TOC entry 3305 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: tripulacion_id_tripulacion_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1244,7 +1245,7 @@ CREATE SEQUENCE public.ubicacion_id_seq
 ALTER SEQUENCE public.ubicacion_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3305 (class 0 OID 0)
+-- TOC entry 3306 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: ubicacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1303,7 +1304,7 @@ CREATE SEQUENCE public.vendedor_id_vendedor_seq
 ALTER SEQUENCE public.vendedor_id_vendedor_seq OWNER TO postgres;
 
 --
--- TOC entry 3306 (class 0 OID 0)
+-- TOC entry 3307 (class 0 OID 0)
 -- Dependencies: 254
 -- Name: vendedor_id_vendedor_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -1353,7 +1354,7 @@ CREATE SEQUENCE seguridad.usuarios_id_seq
 ALTER SEQUENCE seguridad.usuarios_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3307 (class 0 OID 0)
+-- TOC entry 3308 (class 0 OID 0)
 -- Dependencies: 248
 -- Name: usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: seguridad; Owner: postgres
 --
@@ -1538,7 +1539,7 @@ ALTER TABLE ONLY seguridad.usuarios ALTER COLUMN id SET DEFAULT nextval('segurid
 
 
 --
--- TOC entry 3227 (class 0 OID 84606)
+-- TOC entry 3228 (class 0 OID 84606)
 -- Dependencies: 203
 -- Data for Name: alicuota_iva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1549,7 +1550,7 @@ COPY public.alicuota_iva (id_alicuota_iva, desc_alicuota_iva, desc_porcentaj) FR
 
 
 --
--- TOC entry 3229 (class 0 OID 84611)
+-- TOC entry 3230 (class 0 OID 84611)
 -- Dependencies: 205
 -- Data for Name: banco; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1588,7 +1589,7 @@ COPY public.banco (id_banco, codigo_b, nombre_b) FROM stdin;
 
 
 --
--- TOC entry 3231 (class 0 OID 84616)
+-- TOC entry 3232 (class 0 OID 84616)
 -- Dependencies: 207
 -- Data for Name: buque; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1744,20 +1745,20 @@ COPY public.buque (id, nombrebuque, matricula, trailer, pies, tipo, color, eslor
 
 
 --
--- TOC entry 3274 (class 0 OID 123922)
+-- TOC entry 3275 (class 0 OID 123922)
 -- Dependencies: 257
 -- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.cliente (id_cliente, nombre_clien, rif_clien, direccion, telefono, limitecredito, id_vendedor, status, id_usuario, fecha_creacion) FROM stdin;
 1	Comercio AMD	J000000	s	041400000	0	1	1	1	2024-02-12
-2	Siled Delgado	V21151374	t	04123934242	0	1	1	1	2024-02-12
 3	Comercio Orinoco	J55555	xxxxx	3333	0	1	1	2	2024-02-17
+2	Siled Delgado.	V21151374	santa teresa del tuy	04123934242	1500	2	1	1	2024-02-12
 \.
 
 
 --
--- TOC entry 3275 (class 0 OID 123936)
+-- TOC entry 3276 (class 0 OID 123936)
 -- Dependencies: 258
 -- Data for Name: descuento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1769,7 +1770,7 @@ COPY public.descuento (id_desc, desc_desc, porcentaje) FROM stdin;
 
 
 --
--- TOC entry 3233 (class 0 OID 84624)
+-- TOC entry 3234 (class 0 OID 84624)
 -- Dependencies: 209
 -- Data for Name: deta_factura; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1783,30 +1784,30 @@ COPY public.deta_factura (id, matricula, pies, ob, tarifa, dia, canon, monto_est
 
 
 --
--- TOC entry 3277 (class 0 OID 132128)
+-- TOC entry 3278 (class 0 OID 132128)
 -- Dependencies: 260
 -- Data for Name: deta_recibo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.deta_recibo (id, cedula, code1, cantidad, cot_u, sub_t, id_des, t_desc, total, id_fact) FROM stdin;
-2	V21151374	222	\N	 9,63	96,3	5	4,82	91,48	2
-3	J000000	222	10	 9,63	96,3	0	0	96,3	3
-3	J000000	331086	20	 17,50	350	0	0	350	3
-4	J55555	222	1	 9,63	9,63	0	0	9,63	4
-4	J55555	288	33	 4,73	156,09	0	0	156,09	4
-4	J55555	223	1	 5,30	5,3	0	0	5,3	4
-4	J55555	101	1	 10,50	10,5	5	0,53	9,97	4
-4	J55555	331086	12	 17,50	210	5	10,5	199,5	4
-4	J55555	5670	1	 10,50	10,5	0	0	10,5	4
-4	J55555	105	1	 4,73	4,73	0	0	4,73	4
-6	J000000	288	10	 4,73	47,3	0	0	47,3	6
-7	J55555	331086	16	 17,50	280	0	0	280	7
-8	J55555	101	8	 10,50	84	0	0	84	8
+COPY public.deta_recibo (id, cedula, code1, cantidad, cot_u, sub_t, id_des, t_desc, total, id_fact, fecha_reg) FROM stdin;
+3	J000000	222	10	 9,63	96,3	0	0	96,3	3	2024-02-05
+3	J000000	331086	20	 17,50	350	0	0	350	3	2024-02-05
+4	J55555	222	1	 9,63	9,63	0	0	9,63	4	2024-02-20
+4	J55555	288	33	 4,73	156,09	0	0	156,09	4	2024-02-20
+4	J55555	223	1	 5,30	5,3	0	0	5,3	4	2024-02-20
+4	J55555	101	1	 10,50	10,5	5	0,53	9,97	4	2024-02-20
+4	J55555	331086	12	 17,50	210	5	10,5	199,5	4	2024-02-20
+4	J55555	5670	1	 10,50	10,5	0	0	10,5	4	2024-02-20
+4	J55555	105	1	 4,73	4,73	0	0	4,73	4	2024-02-20
+6	J000000	288	10	 4,73	47,3	0	0	47,3	6	2024-02-20
+7	J55555	331086	16	 17,50	280	0	0	280	7	2024-02-20
+8	J55555	101	8	 10,50	84	0	0	84	8	2024-02-20
+2	V21151374	222	0	 9,63	96,3	5	4,82	91,48	2	2024-02-20
 \.
 
 
 --
--- TOC entry 3235 (class 0 OID 84629)
+-- TOC entry 3236 (class 0 OID 84629)
 -- Dependencies: 211
 -- Data for Name: deta_recibo1; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1819,7 +1820,7 @@ COPY public.deta_recibo1 (id, matricula, pies, ob, tarifa, dia, canon, monto_est
 
 
 --
--- TOC entry 3237 (class 0 OID 84637)
+-- TOC entry 3238 (class 0 OID 84637)
 -- Dependencies: 213
 -- Data for Name: dolar; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1830,7 +1831,7 @@ COPY public.dolar (id_dolar, desc_dolarc, desc_dolarp) FROM stdin;
 
 
 --
--- TOC entry 3239 (class 0 OID 84642)
+-- TOC entry 3240 (class 0 OID 84642)
 -- Dependencies: 215
 -- Data for Name: empresa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1841,7 +1842,7 @@ COPY public.empresa (id, descripcion, rif, fecha, fecha_update) FROM stdin;
 
 
 --
--- TOC entry 3240 (class 0 OID 84645)
+-- TOC entry 3241 (class 0 OID 84645)
 -- Dependencies: 216
 -- Data for Name: estatus; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1855,7 +1856,7 @@ COPY public.estatus (id_status, descripcion, fecha_reg, fecha_update) FROM stdin
 
 
 --
--- TOC entry 3241 (class 0 OID 84652)
+-- TOC entry 3242 (class 0 OID 84652)
 -- Dependencies: 217
 -- Data for Name: factura; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1869,7 +1870,7 @@ COPY public.factura (id, nro_factura, nombre, matricula, tele_1, total_iva, tota
 
 
 --
--- TOC entry 3267 (class 0 OID 123823)
+-- TOC entry 3268 (class 0 OID 123823)
 -- Dependencies: 250
 -- Data for Name: marca; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1890,7 +1891,7 @@ COPY public.marca (id_marca, desc_marca, id_usuario, fecha) FROM stdin;
 
 
 --
--- TOC entry 3243 (class 0 OID 84660)
+-- TOC entry 3244 (class 0 OID 84660)
 -- Dependencies: 219
 -- Data for Name: mensualidad; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -4020,7 +4021,7 @@ COPY public.mensualidad (id_mensualidad, matricula, pies, id_tarifa, tarifa, dia
 
 
 --
--- TOC entry 3245 (class 0 OID 84673)
+-- TOC entry 3246 (class 0 OID 84673)
 -- Dependencies: 222
 -- Data for Name: mov_consig; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -7994,7 +7995,7 @@ COPY public.mov_consig (id_mov_consig, id_mensualidad, id_tipo_pago, nro_referen
 
 
 --
--- TOC entry 3278 (class 0 OID 132144)
+-- TOC entry 3279 (class 0 OID 132144)
 -- Dependencies: 261
 -- Data for Name: mov_prod; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8008,7 +8009,7 @@ COPY public.mov_prod (id_mov, id_producto, quantity, id_usuario, fecha_creacion,
 
 
 --
--- TOC entry 3270 (class 0 OID 123869)
+-- TOC entry 3271 (class 0 OID 123869)
 -- Dependencies: 253
 -- Data for Name: producto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8028,7 +8029,7 @@ COPY public.producto (id_producto, code_p, descripcion, id_und, id_marca, quanti
 
 
 --
--- TOC entry 3247 (class 0 OID 84686)
+-- TOC entry 3248 (class 0 OID 84686)
 -- Dependencies: 225
 -- Data for Name: propiet; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8199,7 +8200,7 @@ COPY public.propiet (id_propiet, cedula, tipo_ced, nombrecom, tele_1, email, tip
 
 
 --
--- TOC entry 3276 (class 0 OID 123939)
+-- TOC entry 3277 (class 0 OID 123939)
 -- Dependencies: 259
 -- Data for Name: recibo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8217,7 +8218,7 @@ COPY public.recibo (id, nombre, cedula, tele_1, fecha_crear, nro_factura, total_
 
 
 --
--- TOC entry 3249 (class 0 OID 84691)
+-- TOC entry 3250 (class 0 OID 84691)
 -- Dependencies: 227
 -- Data for Name: recibo1; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8229,7 +8230,7 @@ COPY public.recibo1 (id, nombre, matricula, tele_1, fechaingreso, nro_factura, t
 
 
 --
--- TOC entry 3251 (class 0 OID 84708)
+-- TOC entry 3252 (class 0 OID 84708)
 -- Dependencies: 231
 -- Data for Name: tarifa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8249,7 +8250,7 @@ COPY public.tarifa (id_tarifa, desc_concepto, desc_condicion, desc_tarifa, des_u
 
 
 --
--- TOC entry 3253 (class 0 OID 84713)
+-- TOC entry 3254 (class 0 OID 84713)
 -- Dependencies: 233
 -- Data for Name: tipobarco; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8267,7 +8268,7 @@ COPY public.tipobarco (id_tipobarco, desc_tipobarco) FROM stdin;
 
 
 --
--- TOC entry 3255 (class 0 OID 84718)
+-- TOC entry 3256 (class 0 OID 84718)
 -- Dependencies: 235
 -- Data for Name: tipocliente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8280,7 +8281,7 @@ COPY public.tipocliente (id_tipocliente, desc_tipocliente) FROM stdin;
 
 
 --
--- TOC entry 3257 (class 0 OID 84723)
+-- TOC entry 3258 (class 0 OID 84723)
 -- Dependencies: 237
 -- Data for Name: tipoestac; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8292,7 +8293,7 @@ COPY public.tipoestac (id_tipoestac, desc_tipoestac) FROM stdin;
 
 
 --
--- TOC entry 3259 (class 0 OID 84728)
+-- TOC entry 3260 (class 0 OID 84728)
 -- Dependencies: 239
 -- Data for Name: tipopago; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8306,7 +8307,7 @@ COPY public.tipopago (id_tipo_pago, descripcion) FROM stdin;
 
 
 --
--- TOC entry 3261 (class 0 OID 84741)
+-- TOC entry 3262 (class 0 OID 84741)
 -- Dependencies: 243
 -- Data for Name: tripulacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8578,7 +8579,7 @@ COPY public.tripulacion (id_tripulacion, cedulat, tipo_cedt, nombrecomt, tele_1t
 
 
 --
--- TOC entry 3263 (class 0 OID 84746)
+-- TOC entry 3264 (class 0 OID 84746)
 -- Dependencies: 245
 -- Data for Name: ubicacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8597,7 +8598,7 @@ COPY public.ubicacion (id, descripcion, maximo) FROM stdin;
 
 
 --
--- TOC entry 3268 (class 0 OID 123828)
+-- TOC entry 3269 (class 0 OID 123828)
 -- Dependencies: 251
 -- Data for Name: und; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -8615,18 +8616,19 @@ COPY public.und (id_und, desc_und, id_usuario, fecha) FROM stdin;
 
 
 --
--- TOC entry 3272 (class 0 OID 123914)
+-- TOC entry 3273 (class 0 OID 123914)
 -- Dependencies: 255
 -- Data for Name: vendedor; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.vendedor (id_vendedor, nombre_vendedor, rif_vendedor, direccion, telefono, status, id_usuario, fecha_creacion) FROM stdin;
 1	Rober Torres	V21151374	S	4143322413	1	1	2024-02-12
+2	retro	V1542222	S	4143322413	1	1	2024-02-12
 \.
 
 
 --
--- TOC entry 3265 (class 0 OID 84751)
+-- TOC entry 3266 (class 0 OID 84751)
 -- Dependencies: 247
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: seguridad; Owner: postgres
 --
@@ -8641,7 +8643,7 @@ COPY seguridad.usuarios (id, cedula, email, nombre, apellido, password, rif, tel
 
 
 --
--- TOC entry 3308 (class 0 OID 0)
+-- TOC entry 3309 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: alicuota_iva_id_alicuota_iva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8650,7 +8652,7 @@ SELECT pg_catalog.setval('public.alicuota_iva_id_alicuota_iva_seq', 9, true);
 
 
 --
--- TOC entry 3309 (class 0 OID 0)
+-- TOC entry 3310 (class 0 OID 0)
 -- Dependencies: 206
 -- Name: banco_id_banco_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8659,7 +8661,7 @@ SELECT pg_catalog.setval('public.banco_id_banco_seq', 3, true);
 
 
 --
--- TOC entry 3310 (class 0 OID 0)
+-- TOC entry 3311 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: buque_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8668,7 +8670,7 @@ SELECT pg_catalog.setval('public.buque_id_seq', 7, true);
 
 
 --
--- TOC entry 3311 (class 0 OID 0)
+-- TOC entry 3312 (class 0 OID 0)
 -- Dependencies: 256
 -- Name: cliente_id_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8677,7 +8679,7 @@ SELECT pg_catalog.setval('public.cliente_id_cliente_seq', 2, true);
 
 
 --
--- TOC entry 3312 (class 0 OID 0)
+-- TOC entry 3313 (class 0 OID 0)
 -- Dependencies: 210
 -- Name: deta_factura_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8686,7 +8688,7 @@ SELECT pg_catalog.setval('public.deta_factura_id_seq', 38, true);
 
 
 --
--- TOC entry 3313 (class 0 OID 0)
+-- TOC entry 3314 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: deta_recibo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8695,7 +8697,7 @@ SELECT pg_catalog.setval('public.deta_recibo_id_seq', 189, true);
 
 
 --
--- TOC entry 3314 (class 0 OID 0)
+-- TOC entry 3315 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: dolar_id_dolar_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8704,7 +8706,7 @@ SELECT pg_catalog.setval('public.dolar_id_dolar_seq', 3, true);
 
 
 --
--- TOC entry 3315 (class 0 OID 0)
+-- TOC entry 3316 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: factura_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8713,7 +8715,7 @@ SELECT pg_catalog.setval('public.factura_id_seq', 28, true);
 
 
 --
--- TOC entry 3316 (class 0 OID 0)
+-- TOC entry 3317 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: mensualidad_id_mensualidad_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8722,7 +8724,7 @@ SELECT pg_catalog.setval('public.mensualidad_id_mensualidad_seq', 2212, true);
 
 
 --
--- TOC entry 3317 (class 0 OID 0)
+-- TOC entry 3318 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: mov_consig_id_mov_consig_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8731,7 +8733,7 @@ SELECT pg_catalog.setval('public.mov_consig_id_mov_consig_seq', 4177, true);
 
 
 --
--- TOC entry 3318 (class 0 OID 0)
+-- TOC entry 3319 (class 0 OID 0)
 -- Dependencies: 252
 -- Name: producto_id_producto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8740,7 +8742,7 @@ SELECT pg_catalog.setval('public.producto_id_producto_seq', 1, false);
 
 
 --
--- TOC entry 3319 (class 0 OID 0)
+-- TOC entry 3320 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: propiet_id_propiet_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8749,7 +8751,7 @@ SELECT pg_catalog.setval('public.propiet_id_propiet_seq', 412, true);
 
 
 --
--- TOC entry 3320 (class 0 OID 0)
+-- TOC entry 3321 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: recibo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8758,7 +8760,7 @@ SELECT pg_catalog.setval('public.recibo_id_seq', 148, true);
 
 
 --
--- TOC entry 3321 (class 0 OID 0)
+-- TOC entry 3322 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: tarifa_id_tarifa_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8767,7 +8769,7 @@ SELECT pg_catalog.setval('public.tarifa_id_tarifa_seq', 1, true);
 
 
 --
--- TOC entry 3322 (class 0 OID 0)
+-- TOC entry 3323 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: tipobarco_id_tipobarco_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8776,7 +8778,7 @@ SELECT pg_catalog.setval('public.tipobarco_id_tipobarco_seq', 8, true);
 
 
 --
--- TOC entry 3323 (class 0 OID 0)
+-- TOC entry 3324 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: tipocliente_id_tipocliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8785,7 +8787,7 @@ SELECT pg_catalog.setval('public.tipocliente_id_tipocliente_seq', 3, true);
 
 
 --
--- TOC entry 3324 (class 0 OID 0)
+-- TOC entry 3325 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: tipoestac_id_tipoestac_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8794,7 +8796,7 @@ SELECT pg_catalog.setval('public.tipoestac_id_tipoestac_seq', 2, true);
 
 
 --
--- TOC entry 3325 (class 0 OID 0)
+-- TOC entry 3326 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: tipopago_id_tipo_pago_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8803,7 +8805,7 @@ SELECT pg_catalog.setval('public.tipopago_id_tipo_pago_seq', 1, true);
 
 
 --
--- TOC entry 3326 (class 0 OID 0)
+-- TOC entry 3327 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: tripulacion_id_tripulacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8812,7 +8814,7 @@ SELECT pg_catalog.setval('public.tripulacion_id_tripulacion_seq', 659, true);
 
 
 --
--- TOC entry 3327 (class 0 OID 0)
+-- TOC entry 3328 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: ubicacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -8821,16 +8823,16 @@ SELECT pg_catalog.setval('public.ubicacion_id_seq', 2, true);
 
 
 --
--- TOC entry 3328 (class 0 OID 0)
+-- TOC entry 3329 (class 0 OID 0)
 -- Dependencies: 254
 -- Name: vendedor_id_vendedor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.vendedor_id_vendedor_seq', 1, true);
+SELECT pg_catalog.setval('public.vendedor_id_vendedor_seq', 2, true);
 
 
 --
--- TOC entry 3329 (class 0 OID 0)
+-- TOC entry 3330 (class 0 OID 0)
 -- Dependencies: 248
 -- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: seguridad; Owner: postgres
 --
@@ -8839,7 +8841,7 @@ SELECT pg_catalog.setval('seguridad.usuarios_id_seq', 7, true);
 
 
 --
--- TOC entry 3058 (class 2606 OID 84779)
+-- TOC entry 3059 (class 2606 OID 84779)
 -- Name: alicuota_iva alicuota_iva_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8848,7 +8850,7 @@ ALTER TABLE ONLY public.alicuota_iva
 
 
 --
--- TOC entry 3086 (class 2606 OID 123930)
+-- TOC entry 3087 (class 2606 OID 123930)
 -- Name: cliente cliente_id_cliente_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8857,7 +8859,7 @@ ALTER TABLE ONLY public.cliente
 
 
 --
--- TOC entry 3060 (class 2606 OID 84781)
+-- TOC entry 3061 (class 2606 OID 84781)
 -- Name: dolar dolar_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8866,7 +8868,7 @@ ALTER TABLE ONLY public.dolar
 
 
 --
--- TOC entry 3062 (class 2606 OID 84783)
+-- TOC entry 3063 (class 2606 OID 84783)
 -- Name: estatus estatus_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8875,7 +8877,7 @@ ALTER TABLE ONLY public.estatus
 
 
 --
--- TOC entry 3066 (class 2606 OID 84785)
+-- TOC entry 3067 (class 2606 OID 84785)
 -- Name: mov_consig id_mov_consig_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8884,7 +8886,7 @@ ALTER TABLE ONLY public.mov_consig
 
 
 --
--- TOC entry 3078 (class 2606 OID 123827)
+-- TOC entry 3079 (class 2606 OID 123827)
 -- Name: marca marca_id_marca_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8893,7 +8895,7 @@ ALTER TABLE ONLY public.marca
 
 
 --
--- TOC entry 3064 (class 2606 OID 84787)
+-- TOC entry 3065 (class 2606 OID 84787)
 -- Name: mensualidad mensualidad_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8902,7 +8904,7 @@ ALTER TABLE ONLY public.mensualidad
 
 
 --
--- TOC entry 3088 (class 2606 OID 132148)
+-- TOC entry 3089 (class 2606 OID 132148)
 -- Name: mov_prod producto_id_mov_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8911,7 +8913,7 @@ ALTER TABLE ONLY public.mov_prod
 
 
 --
--- TOC entry 3082 (class 2606 OID 123877)
+-- TOC entry 3083 (class 2606 OID 123877)
 -- Name: producto producto_id_producto_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8920,7 +8922,7 @@ ALTER TABLE ONLY public.producto
 
 
 --
--- TOC entry 3074 (class 2606 OID 84789)
+-- TOC entry 3075 (class 2606 OID 84789)
 -- Name: tipopago tipo_pago_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8929,7 +8931,7 @@ ALTER TABLE ONLY public.tipopago
 
 
 --
--- TOC entry 3068 (class 2606 OID 84791)
+-- TOC entry 3069 (class 2606 OID 84791)
 -- Name: tipobarco tipobarco_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8938,7 +8940,7 @@ ALTER TABLE ONLY public.tipobarco
 
 
 --
--- TOC entry 3070 (class 2606 OID 84793)
+-- TOC entry 3071 (class 2606 OID 84793)
 -- Name: tipocliente tipocliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8947,7 +8949,7 @@ ALTER TABLE ONLY public.tipocliente
 
 
 --
--- TOC entry 3072 (class 2606 OID 84795)
+-- TOC entry 3073 (class 2606 OID 84795)
 -- Name: tipoestac tipoestac_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8956,7 +8958,7 @@ ALTER TABLE ONLY public.tipoestac
 
 
 --
--- TOC entry 3080 (class 2606 OID 123832)
+-- TOC entry 3081 (class 2606 OID 123832)
 -- Name: und und_id_und_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8965,7 +8967,7 @@ ALTER TABLE ONLY public.und
 
 
 --
--- TOC entry 3084 (class 2606 OID 123919)
+-- TOC entry 3085 (class 2606 OID 123919)
 -- Name: vendedor vendedor_id_vendedor_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -8974,7 +8976,7 @@ ALTER TABLE ONLY public.vendedor
 
 
 --
--- TOC entry 3076 (class 2606 OID 84797)
+-- TOC entry 3077 (class 2606 OID 84797)
 -- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: seguridad; Owner: postgres
 --
 
@@ -8983,7 +8985,7 @@ ALTER TABLE ONLY seguridad.usuarios
 
 
 --
--- TOC entry 3093 (class 2620 OID 132143)
+-- TOC entry 3094 (class 2620 OID 132143)
 -- Name: deta_recibo update_quantity; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -8991,7 +8993,7 @@ CREATE TRIGGER update_quantity AFTER INSERT ON public.deta_recibo FOR EACH ROW E
 
 
 --
--- TOC entry 3091 (class 2606 OID 123931)
+-- TOC entry 3092 (class 2606 OID 123931)
 -- Name: cliente cliente_id_vendedor_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -9000,7 +9002,7 @@ ALTER TABLE ONLY public.cliente
 
 
 --
--- TOC entry 3089 (class 2606 OID 123883)
+-- TOC entry 3090 (class 2606 OID 123883)
 -- Name: producto producto_id_marca_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -9009,7 +9011,7 @@ ALTER TABLE ONLY public.producto
 
 
 --
--- TOC entry 3092 (class 2606 OID 132149)
+-- TOC entry 3093 (class 2606 OID 132149)
 -- Name: mov_prod producto_id_producto_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -9018,7 +9020,7 @@ ALTER TABLE ONLY public.mov_prod
 
 
 --
--- TOC entry 3090 (class 2606 OID 123878)
+-- TOC entry 3091 (class 2606 OID 123878)
 -- Name: producto producto_id_und_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -9027,7 +9029,7 @@ ALTER TABLE ONLY public.producto
 
 
 --
--- TOC entry 3285 (class 0 OID 0)
+-- TOC entry 3286 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -9036,7 +9038,7 @@ REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2024-02-22 01:01:39 -04
+-- Completed on 2024-02-25 21:12:30 -04
 
 --
 -- PostgreSQL database dump complete

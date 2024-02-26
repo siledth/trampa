@@ -143,11 +143,13 @@
                             <i class="fas fa-file-alt fa-lg"></i>
                             <span> Reporte</span>
                         </a>
-                        <!-- <ul class="sub-menu">
+                        <ul class="sub-menu">
                             <li class="has-sub">
                                 <a href="javascript:;">
-                                    <li><a href="<?= base_url() ?>index.php/Reporte/ubicaci">Ubicacion</a></li>
-                                    <li><a href="<?= base_url() ?>index.php/Reporte/ubicaciones">Ubicación Detallada</a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Reporte/ventas_d">Ventas</a></li>
+
+                                    <!-- <li><a href="<?= base_url() ?>index.php/Reporte/ubicaci">Ubicacion</a></li> -->
+                                    <!-- <li><a href="<?= base_url() ?>index.php/Reporte/ubicaciones">Ubicación Detallada</a></li>
                                     <li><a href="<?= base_url() ?>index.php/Reporte/Report">Total Canon</a></li>
                                     <li><a href="<?= base_url() ?>index.php/Reporte/saldoxpagar">Saldo por Pagar</a></li>
                                     <li><a href="<?= base_url() ?>index.php/Reporte/condxpagar">Condición de Pago</a></li>
@@ -162,10 +164,10 @@
                                         <ul class="sub-menu">
                                             <li><a href="<?= base_url() ?>index.php/Reporte/Reporte_jefes">Ver</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </a>
                             </li>
-                        </ul> -->
+                        </ul>
                     </li>
                     <li class="has-sub">
                         <a href="javascript:;">
@@ -173,15 +175,17 @@
                             <i class="fas fa-chart-pie"></i>
                             <span> Gráficas</span>
                         </a>
-                        <!-- <ul class="sub-menu">
+                        <ul class="sub-menu">
                             <li class="has-sub">
                                 <a href="javascript:;">
-                                    <li><a href="<?= base_url() ?>index.php/Reporte/tt_ing_egr">Totales Ingreso / Egresos</a></li>
+                                <li><a href="<?= base_url() ?>index.php/Productos/graf">Producto Mas Vendido</a></li>
+
+                                    <!-- <li><a href="<?= base_url() ?>index.php/Reporte/tt_ing_egr">Totales Ingreso / Egresos</a></li>
                                     <li><a href="<?= base_url() ?>index.php/Reporte/tt_ing_tar">Ingreso por Recibos (Tarifas)</a></li>
-                                    <li><a href="<?= base_url() ?>index.php/Reporte/f_tt_ing_tar">Ingreso por Facturas (Tarifas)</a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Reporte/f_tt_ing_tar">Ingreso por Facturas (Tarifas)</a></li> -->
                                 </a>
                             </li>
-                        </ul> -->
+                        </ul>
                     </li>
                 <?php endif; ?>
                 <?php if ($this->session->userdata('perfil') == 3) : ?>

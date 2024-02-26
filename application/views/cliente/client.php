@@ -42,8 +42,8 @@
                                 </div>
                                 <div class="form-group col-4">
 
-                                    <label>Limite de Credito</label>
-                                    <input id="limitecredito" name="limitecredito"  
+                                    <label>Limite de Credito $</label>
+                                    <input id="limitecredito"  type="number" name="limitecredito"  
                                         class="form-control">
                                 </div> 
                                 <div class=" col-3 form-group">
@@ -119,8 +119,68 @@
         </div>
 
     </div>
+    <div id="myModal_bienes" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modificar </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
 
+                        <input type="hidden" class="form-control" name="id_organoentes" id="id_organoentes">
+                        <div class="form-group col-3">
+                            <label>RIF</label>
+                            <input class="form-control" type="hidden" name="id_organoente4" id="id_organoente4" readonly>
+                            <input class="form-control" type="text" name="rif4" id="rif4" readonly>
 
+                        </div>
+                        <div class="form-group col-9">
+                            <label>Razón Social</label>
+                            <input id="descripcion4" name="descripcion4" class="form-control" class="form-control"maxlength="250">
+                        </div>                      
+                        <div class="form-group col-3">
+                            <label>Proveedor</label>
+                            <input type="text" class="form-control" name="descedo4" id="descedo4" disabled>
+                            <input type="hidden" name="id_estado4" id="id_estado4">
+                        </div>
+                        <div class="form-group col-3">
+                            <label> Cambiar Proveedor <i
+                                    title="Si quiere cambiar el estado seleccionar"
+                                    class="fas fa-question-circle"></i></label>
+                                    <select class="form-control" name="cambio_edo" id="cambio_edo"
+                                        onclick="llenar_muni();">
+                                        <option value="0">Seleccione</option>
+                                    </select>
+                        </div>
+
+                       
+                     
+                        <div class="form-group col-3">
+                            <label>Limite de Credito $</label>
+                            <input type="number" class="form-control" id="limitecredito4" name="limitecredito4" onkeyup="validateMaxLength(this)" />
+                                <p id="errorMsg"></p>
+                        </div>
+                        <div class="form-group col-6">
+                        <label>Dirección Fiscal</label>
+                        <textarea class="form-control" id="direccion_fiscal4" name="direccion_fiscal4" rows="2" cols="125"></textarea>
+                        </div>
+                        <div class="form-group col-3">
+                            <label>Telefono local</label>
+                            <input type="number" class="form-control" id="tel14" name="tel14" onkeyup="validateMaxLength(this)" />
+                                <p id="errorMsg"></p>
+                        </div>                  
+                      
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="my-button" id="btn_guar_2" onclick="save_modif_org();"
+                            data-dismiss="modal">Guardar</button>
+                        <button type="button"  class="my-button" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="<?=base_url()?>/js/cliente/cliente.js">
 
 

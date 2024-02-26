@@ -121,4 +121,14 @@ class Productos_model extends CI_Model
         // return $id;
     }
     } 
+    public function get_top_products($limit = 10) {
+        $this->db->select('rc.code1, SUM(rc.cantidad) as total_sold, p.descripcion');
+        $this->db->from('deta_recibo rc');
+        $this->db->join('public.producto p', 'p.code_p = rc.code1');
+        $this->db->group_by('rc.code1,p.descripcion');
+        $this->db->order_by('total_sold', 'DESC');
+        $this->db->limit($limit);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

@@ -22,6 +22,8 @@ $("#price_sale").on({
         });
     }
 });
+ 
+
 function valideKey(evt) {
     var code = (evt.which) ? evt.which : evt.keyCode;
     if (code == 8) { // backspace.
@@ -123,4 +125,122 @@ function guardar_b(){
             }
         });
     
+}
+
+
+function modal(id) {
+    var id_cliente = id;
+    var base_url =window.location.origin+'/trampa/index.php/Clientes/read_list';
+    var base_url2 =window.location.origin+'/trampa/index.php/Clientes/llenar_vende';
+       
+        // var base_url = '/index.php/Configuracion/read_list';
+        //  var base_url2 = '/index.php/Configuracion/llenar_edo';
+        // var base_url7 = '/index.php/Configuracion/llenar_ff_';
+    $.ajax({
+        url: base_url,
+        method: "post",
+        data: { id_cliente: id_cliente },
+        dataType: "json",
+        success: function(data) {
+            $('#id_organoentes4').val(id);
+            $("#id_organoente4").val(id_cliente);
+            $("#rif4").val(data["rif_clien"]);
+            $("#descripcion4").val(data["nombre_clien"]);
+            $("#direccion_fiscal4").val(data["direccion"]);
+            $("#tel14").val(data["telefono"]);
+            $("#limitecredito4").val(data["limitecredito"]);
+            
+            $("#id_estado4").val(data["id_vendedor"]); 
+            $("#descedo4").val(data["nombre_vendedor"]); 
+           
+            
+
+
+
+
+                   
+
+
+// llena el select de unidad de medida
+            var id_estado = data['id_vendedor'];
+             
+        $.ajax({
+            url:base_url2,
+            method: 'post',
+            data: {id_estado: id_estado},
+            dataType: 'json',
+            success: function(data){
+                $.each(data, function(index, data){
+                    $('#cambio_edo').append('<option value="'+data['id_vendedor']+'">'+data['nombre_vendedor']+'</option>');
+
+                });
+            }
+        })
+            
+
+          
+        },
+    });
+}
+function save_modif_org(){//////////////////////////////////////////accion central
+    event.preventDefault();
+
+    swal.fire({
+        title: '¿Seguro desea Modificar? ',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: '¡Si, Modificar!'
+    }).then((result) => {
+        if (result.value == true) {
+            var id_cliente = $('#id_organoente4').val();
+            var nombre_clien = $('#descripcion4').val();
+           
+            var id_vendedor = $('#id_estado4').val();
+            var cambio_edo = $('#cambio_edo').val();
+           
+            var direccion = $('#direccion_fiscal4').val();
+            var telefono = $('#tel14').val();
+            var limitecredito = $('#limitecredito4').val();
+           
+            var base_url =window.location.origin+'/trampa/index.php/Clientes/save_modif_org1';
+
+   
+
+            $.ajax({
+                url:base_url,
+                method: 'post',
+                data:{
+                    id_cliente: id_cliente,
+                    nombre_clien: nombre_clien, 
+                    id_vendedor: id_vendedor, 
+                    cambio_edo: cambio_edo,
+                    direccion: direccion,
+                    telefono: telefono,
+                    limitecredito: limitecredito,
+
+                                     
+
+                },
+                dataType: 'json',
+                success: function(response){
+                    if(response == 1) {
+                        swal.fire({
+                            title: 'Se Modifico la información con exito.',
+                            type: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Ok'
+                        }).then((result) => {
+                            if (result.value == true) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            })
+        }
+    });
 }

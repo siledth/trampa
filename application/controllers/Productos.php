@@ -52,4 +52,13 @@ class Productos extends CI_Controller {
         $data =	$this->Productos_model->guardar_stock($data);
         echo json_encode($data);
     }
+
+    public function graf() {
+        $data['top_products'] = $this->Productos_model->get_top_products(10);
+        $this->load->view('templates/header.php');
+        $this->load->view('templates/navigator.php');
+        $this->load->view('grafico/charts.php', $data);
+        $this->load->view('templates/footer.php');
+    
+          }
 }

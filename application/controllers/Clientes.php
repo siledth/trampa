@@ -36,4 +36,23 @@ class Clientes extends CI_Controller {
         $data = $this->Cliente_model->save_client($data1);
         echo json_encode($data);
     } 
+
+    public function read_list(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data = $this->input->post();
+        $data =	$this->Cliente_model->read_list($data);
+        echo json_encode($data);
+    }
+    public function llenar_vende(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data = $this->input->post();
+        $data =	$this->Cliente_model->llenar_vende($data);
+        echo json_encode($data);
+    }
+    public function save_modif_org1(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data = $this->input->post();
+        $data =	$this->Cliente_model->save_modif_org1($data);
+        echo json_encode($data);
+    }
 }

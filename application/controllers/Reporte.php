@@ -440,4 +440,48 @@ class Reporte extends CI_Controller {
 		$this->load->view('Reporte/inf_buque_usuario.php', $data);
         $this->load->view('templates/footer.php');
 	}
+	public function ventas_d(){
+		if(!$this->session->userdata('session'))redirect('login');
+		$data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] 		 = $this->session->userdata('rif');
+		//$data['tp_pagos']    = $this->Reporte_model->tp_pago();    
+		
+		$hasta     = $this->input->post("hasta");
+		$desde     = $this->input->post("desde");
+        $data['desde'] = date('Y-m-d', strtotime($desde));
+		$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+	//	$this->form_validation->set_rules('t_pago', 't_pago', 'required|callback_select_validate');
+		$this->form_validation->set_rules('hasta', 'Fecha hasta', 'required|min_length[1]');
+		$this->form_validation->set_rules('desde', 'Fecha Desde ', 'required|min_length[1]');
+
+		if ($this->form_validation->run() == FALSE) {
+			$data['descripcion'] = $this->session->userdata('unidad');
+			$data['rif'] 		 = $this->session->userdata('rif');
+			//$data['tp_pagos']    = $this->Reporte_model->tp_pago();    
+			$this->load->view('templates/header.php');
+			$this->load->view('templates/navigator.php');
+			$this->load->view('Reporte/ventas_porfecha/ventas_d.php', $data);
+			$this->load->view('templates/footer.php');
+	
+
+
+		} else {
+			$data['descripcion'] = $this->session->userdata('unidad');
+			$data['rif'] 		 = $this->session->userdata('rif');
+		//	$data['t_pago']=$this->input->post("t_pago");
+			$hasta     = $this->input->post("hasta");
+			$desde     = $this->input->post("desde");
+			$data['desde'] = date('Y-m-d', strtotime($desde));
+			$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+			$data['results'] 	 =	$this->Reporte_model->consulta_venta($data);
+			//$data['results_2'] 	 =	$this->Reporte_model->consultar_t_pago2_detalle($data);
+			$this->load->view('templates/header.php');
+			$this->load->view('templates/navigator.php');
+			$this->load->view('Reporte/ventas_porfecha/result_v_dia.php', $data);
+			$this->load->view('templates/footer.php');
+				}
+
+
+
+	}
 }

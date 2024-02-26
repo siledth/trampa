@@ -71,4 +71,51 @@ class Cliente_model extends CI_Model
             return true;
         }
     }
+
+    public function read_list($data){
+        $this->db->select('c.id_cliente, c.nombre_clien, c.rif_clien, c.direccion, c.telefono, c.limitecredito,c.id_vendedor,v.nombre_vendedor');
+        $this->db->where('c.id_cliente', $data['id_cliente']);
+        $this->db->join('vendedor v', 'v.id_vendedor = c.id_vendedor', 'left');    
+
+		$this->db->from('public.cliente c');
+ 		// $this->db->order_by('mc.id_p_items desc');
+		$query = $this->db->get();
+		$resultado = $query->row_array();
+		return $resultado;
+	}
+    public function llenar_vende($data){
+        $this->db->select("id_vendedor, nombre_vendedor");
+      //  $this->db->where('pi2.id !=', $data['id_estado']);
+        $query = $this->db->get('public.vendedor');
+        return $query->result_array();
+    }
+    public function save_modif_org1($data){
+
+        $this->db->where('id_cliente', $data['id_cliente']);
+    
+        $pp_s = $data['cambio_edo'];
+        if ($pp_s == 0) {
+            $id_vendedor = $data['id_vendedor'];
+        }else {
+            $id_vendedor = $data['cambio_edo'];
+        } 
+       
+        $data1 = array(
+            'nombre_clien'        => $data['nombre_clien'],
+            
+            'id_vendedor'          => $id_vendedor,
+           
+            'direccion'         => $data['direccion'],
+            'telefono'         => $data['telefono'],
+            'limitecredito'         => $data['limitecredito'],
+
+            
+                
+           
+    
+    
+        );
+        $update = $this->db->update('public.cliente', $data1);
+        return true;
+    }
 }

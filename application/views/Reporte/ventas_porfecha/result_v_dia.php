@@ -27,10 +27,10 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-14">
                         <div class="panel-body">
                             <div class="col-12 text-center">
-                                <h4>Ventas diarias</h4>
+                                <h4> Reporte Ventas Rango de Fecha</h4>
                             </div>
 
                             <table id="data-table-default" class="table table-striped table-bordered">

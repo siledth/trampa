@@ -8,6 +8,11 @@ class Mensualidades extends CI_Controller {
 	   	$data =	$this->Mensualidades_model->cons_nro_notapago();
 	   	echo json_encode($data);
     }
+    public function cons_nro_factur_cliente(){
+        if(!$this->session->userdata('session'))redirect('login');
+	   	$data =	$this->Mensualidades_model->cons_nro_factur_cliente();
+	   	echo json_encode($data);
+    }
     public function cons_nro_adelanto(){
         if(!$this->session->userdata('session'))redirect('login');
 	   	$data =	$this->Mensualidades_model->cons_nro_adelantos();
@@ -23,11 +28,11 @@ class Mensualidades extends CI_Controller {
         $data['mat'] = $this->Programacion_model->consulta_matricula();
         $date = date('d');
         
-        $generar = $this->Mensualidades_model->generar($date);
+        // $generar = $this->Mensualidades_model->generar($date);
        
-        if ($generar) {
-            $data['ver_deudas'] = $this->Mensualidades_model->ver_deudas($date);           
-        }
+        // if ($generar) {
+        // }
+        $data['ver_deudas'] = $this->Mensualidades_model->ver_deudas($date);           
 
         $data['banco'] = $this->Mensualidades_model->ver_banco(); 
         $data['tipoPago'] = $this->Mensualidades_model->ver_tipPago(); 
@@ -113,4 +118,58 @@ class Mensualidades extends CI_Controller {
         $data = $this->Mensualidades_model->anular_factura($data);
         echo json_encode($data);
     }
+    public function cliente(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] = $this->session->userdata('rif');
+        $data['time']=date("d-m-Y");
+        $data['te']=date('d');
+        $data['mat'] = $this->Programacion_model->consulta_matricula();
+        $date = date('d');
+        
+        // $generar = $this->Mensualidades_model->generar($date);
+       
+        // if ($generar) {
+        // }
+        $data['ver_deudas'] = $this->Mensualidades_model->ver_deudas_cliente($date);           
+
+        $data['banco'] = $this->Mensualidades_model->ver_banco(); 
+        $data['tipoPago'] = $this->Mensualidades_model->ver_tipPago(); 
+
+		$this->load->view('templates/header.php');
+        $this->load->view('templates/navigator.php');
+		$this->load->view('cuentaxcobrar_cliente/cuentaxcobrar_clien.php', $data);
+        $this->load->view('templates/footer.php');
+	}
+    public function consultar_cxc_client1(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data = $this->input->post();
+        $data =	$this->Mensualidades_model->consultar_cxc_client1($data);
+        echo json_encode($data);
+    }
+    public function guardar_proc_pag_cliente(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data['time']=date("d-m-Y");
+        $data = $this->input->post();
+        $data =	$this->Mensualidades_model->guardar_proc_pag_cliente($data);
+        echo json_encode($data);
+    }
+    public function verPago_cliente(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $id_mesualidad = $this->input->get('id');
+
+        $data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] = $this->session->userdata('rif');
+       
+        $data['time']=date("d-m-Y");
+
+        $data['inf_client'] =	$this->Mensualidades_model->ver_nota_cliente($id_mesualidad);
+        $data['inf_pago']  =	$this->Mensualidades_model->ver_pagos_cliente($id_mesualidad);
+
+        $this->load->view('templates/header.php');
+        $this->load->view('templates/navigator.php');
+		$this->load->view('cuentaxcobrar_cliente/nota_pago_cliente.php', $data);
+        $this->load->view('templates/footer.php');
+    }
+
 }

@@ -539,5 +539,98 @@ class Reporte_model extends CI_Model {
         $query = $this->db->get('deta_recibo rc');
         return $query->result_array();
     }
+    public function clientes(){         
+        $this->db->select('rif_clien, nombre_clien');
+        $query = $this->db->get('public.cliente');
+        return $query->result_array();
+    }
+    public function consultar_cxc_client($data){
+        //print_r($data);die;
+        if ($data['cliente'] == 1) {
+            $this->db->select("mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear");
+            // $this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+            // $this->db->join('buque t', 't.matricula = m.matricula', 'left');
+            $this->db->where('mc.tipo_pago', 4);
+            $this->db->where('mc.forma_pago', 0);
+
+            $this->db->where('mc.fecha_crear >=', $data['desde']);
+            $this->db->where('mc.fecha_crear <=', $data['hasta']);
+            // $this->db->order_by('m.matricula');
+            $query = $this->db->get('recibo mc');
+            return $query->result_array();
+        }else{
+            $this->db->select("mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear");
+            // $this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+            // $this->db->join('buque t', 't.matricula = m.matricula', 'left');
+            $this->db->where('mc.cedula', $data['cliente']);
+            $this->db->where('mc.tipo_pago', 4);
+            $this->db->where('mc.forma_pago', 0);
+            $this->db->where('mc.fecha_crear >=', $data['desde']);
+            $this->db->where('mc.fecha_crear <=', $data['hasta']);
+            // $this->db->order_by('m.matricula');
+            $this->db->group_by('mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear');
+            $query = $this->db->get('recibo mc');
+            return $query->result_array();
+        }
+    }
+    public function consultar_cxc_client3($data){
+        if ($data['cliente'] == 1) {
+            $this->db->select("sum(to_number(mc.total_mas_iva,'999999999999D99')) as total_mas_iva");
+                            //$this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+                            //$this->db->where('m.matricula', $data['matricula']);
+                            $this->db->where('mc.tipo_pago', 4);
+                            $this->db->where('mc.forma_pago', 0);
+                            $this->db->where('mc.fecha_crear >=', $data['desde']);
+                            $this->db->where('mc.fecha_crear <=', $data['hasta']);
+                            $query = $this->db->get('recibo mc');
+                            return $query->row_array();
+        }else{
+            $this->db->select("sum(to_number(mc.total_mas_iva,'999999999999D99')) as total_mas_iva");
+           //$this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+            $this->db->where('mc.cedula', $data['cliente']);
+            $this->db->where('mc.tipo_pago', 4);
+            $this->db->where('mc.forma_pago', 0);
+            $this->db->where('mc.fecha_crear >=', $data['desde']);
+            $this->db->where('mc.fecha_crear <=', $data['hasta']);
+            $query = $this->db->get('recibo mc');
+            return $query->row_array();
+        }
+    }
+
+    public function producto(){         
+        $this->db->select('code_p, descripcion');
+        $query = $this->db->get('public.producto');
+        return $query->result_array();
+    }
+    public function consultar_despacho_pd_clien($data){
+        //print_r($data);die;
+        if ($data['producto'] == 1) {
+            $this->db->select("mc.cedula,mc.code1,SUM(mc.cantidad) as cantidad, p.descripcion,c.nombre_clien");
+            $this->db->join('producto p', 'p.code_p = mc.code1');
+            $this->db->join('cliente c', 'c.rif_clien = mc.cedula');
+           // $this->db->where('tipo_pago', 4);
+            $this->db->where('mc.fecha_reg >=', $data['desde']);
+            $this->db->where('mc.fecha_reg <=', $data['hasta']);
+            $this->db->group_by('mc.cedula, mc.code1,p.descripcion,c.nombre_clien');
+
+            // $this->db->order_by('m.matricula');
+            $query = $this->db->get('deta_recibo mc');
+            return $query->result_array();
+        }else{
+            $this->db->select("  mc.cedula,SUM(mc.cantidad) as cantidad, mc.code1,p.descripcion, c.nombre_clien");
+            $this->db->join('producto p', 'p.code_p = mc.code1');
+            $this->db->join('cliente c', 'c.rif_clien = mc.cedula');
+            $this->db->where('mc.code1', $data['producto']);
+          //  $this->db->where('tipo_pago', 4);
+            $this->db->where('mc.fecha_reg >=', $data['desde']);
+            $this->db->where('mc.fecha_reg <=', $data['hasta']);
+            // $this->db->order_by('m.matricula');
+            $this->db->group_by('  mc.cedula, mc.code1,p.descripcion,c.nombre_clien');
+            $query = $this->db->get('deta_recibo mc');
+            return $query->result_array();
+        }
+    }
+    
+    
     
 }

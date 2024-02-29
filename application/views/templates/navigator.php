@@ -66,6 +66,25 @@
                                 </ul>
                             </li>
                         </ul>
+                    </li> <i class="fa-solid fa-person-walking-luggage"></i>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <b class="fas fa-running fa-lg"></b>
+                            <span>Vendedores</span>
+                        </a>
+
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="fas fa-user-circle"></b>
+                                    <span>Vendedores</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="<?= base_url() ?>index.php/Vendedores/create_vend">Registrar</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                     <li class="has-sub">
                         <a href="javascript:;">
@@ -82,6 +101,25 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li><a href="<?= base_url() ?>index.php/Clientes/create_cl">Registrar</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                        <b class="caret"></b>
+                        <b class="fas fa-shuttle-van fa-lg"></b>
+                            <span>Rutas</span>
+                        </a>
+
+                        <ul class="sub-menu">
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="fas fa-user-circle"></b>
+                                    <span>Rutas</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="<?= base_url() ?>index.php/Rutas/create_rutas">Registrar</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -135,8 +173,57 @@
                         </ul>
                     </li>
                    
-                   
-                    
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fas fa-file-invoice-dollar fa-lg"></i>
+                            <span>Compras</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <!-- <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <span>Factura</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="<?= base_url() ?>index.php/Factura/fac">Registrar</a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Factura/anuFac">Ver</a></li>
+                                </ul>
+                            </li> -->
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret"></b>
+                                    <span>Modulo de Compras</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="<?= base_url() ?>index.php/Factura/compras">Registrar</a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Factura/verRecibo">Ver </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fas fa-calendar-alt fa-lg"></i>
+                            <span>Cuentas x Pagar Proveedores</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="<?= base_url() ?>index.php/Mensualidades/ver">Ver</a></li>
+                            <!-- <li><a href="<?= base_url() ?>index.php/Factura/anuFac">Ver / Anular</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="has-sub">
+                        <a href="javascript:;">
+                            <b class="caret"></b>
+                            <i class="fas fa-calendar-alt fa-lg"></i>
+                            <span>Cuentas x Pagar clientes</span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="<?= base_url() ?>index.php/Mensualidades/cliente">Ver</a></li>
+                            <!-- <li><a href="<?= base_url() ?>index.php/Factura/anuFac">Ver / Anular</a></li> -->
+                        </ul>
+                    </li>
                     <li class="has-sub">
                         <a href="javascript:;">
                             <b class="caret"></b>
@@ -147,6 +234,9 @@
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <li><a href="<?= base_url() ?>index.php/Reporte/ventas_d">Ventas</a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Reporte/cxc_cliente">Cuentas por Cobrar / por Cliente</a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Reporte/prod_desp_client">Productos despachados a Cliente</a></li>
+
 
                                     <!-- <li><a href="<?= base_url() ?>index.php/Reporte/ubicaci">Ubicacion</a></li> -->
                                     <!-- <li><a href="<?= base_url() ?>index.php/Reporte/ubicaciones">Ubicación Detallada</a></li>

@@ -21,7 +21,6 @@ $('#matricular').on('select2:select', function (e) {
     });
 });
 
-
 function calcular_bienes(){
 
     var pies = $('#pies').val();//cantidad

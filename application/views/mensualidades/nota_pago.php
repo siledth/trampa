@@ -28,71 +28,48 @@
                             </div>
                         </div>
                         <div class="form-group col-10 mt-4">
-                           <h4 class="text-center"> <b>Pago de Mensualidad</b></h4> 
+                           <h4 class="text-center"> <b>Pago de Proveedores</b></h4> 
                         </div>
                         <div class="form-group col-4">
-                            <label><h5> N° Recibo <b title="Campo Obligatorio" style="color:red">* </h5></b></label>
-                            <h5><b>M<?=$inf_buque['nro_factura']?></b> </h5>
+                            <label><h5> N° de pago <b title="Campo Obligatorio" style="color:red">* </h5></b></label>
+                            <h5><b><?=$inf_buque['id']?></b> </h5>
                         </div>
                         <div class="form-group col-2" style="font-size:20px">
                             <label>Estatus<b title="Campo Obligatorio" style="color:red">*</b></label>
                             <h5><b><?=$inf_buque['estatus']?></b> </h5>
                         </div>
-                        <?php if ($inf_buque['id_status'] == 2)  : ?>
+                        <?php if ($inf_buque['estatus'] == 2)  : ?>
                         <div class="form-group col-2" style="font-size:20px">
                             <label>Fecha de pago<b title="Campo Obligatorio" style="color:red">*</b></label>
                             <h5><b><?=date("d-m-Y", strtotime($inf_buque['fecha_update']));?></b> </h5>
                         </div>
                         <?php endif; ?>
-                        <div class="form-group col-10 mt-4">
-                           <h5 class="text-center"> <b> Pago de Arrendamiento de Mes</b></h5> 
-                        </div>
-                        <div class="form-group col-2" style="font-size:20px">
-                            <label>Fecha<b title="Campo Obligatorio" style="color:red">*</b></label>
-                            <h5><b><?=date("d-m-Y", strtotime($inf_buque['fecha_deuda']));?></b> </h5>
+                      
+                        <div class="form-group col-6" style="font-size:20px">
+                            <label>Fecha de Pago<b title="Campo Obligatorio" style="color:red">*</b></label>
+                            <h5><b><?=date("d-m-Y", strtotime($inf_buque['fecha_reg']));?></b> </h5>
                         </div>
                         <div class="col-12">
                             <hr style="border-top: 1px solid rgba(0, 0, 0, 0.39);">
                         </div>
                         <div class="col-12 text-center">
-                            <h5 style="color:red;">Propietario y Embarcación</h5>
+                            <h5 style="color:red;">Proveedor</h5>
                         </div>
                         <div class="col-3" style="font-size:20px">
-                            <label>Cédula</label>
-                            <h5><b><?=$inf_buque['cedula']?></b> </h5>
+                            <label>Rif</label>
+                            <h5><b><?=$inf_buque['rif_proveedor']?></b> </h5>
                         </div>
                         <div class="col-3" style="font-size:20px">
-                            <label>Nombre y Apellido</label>
-                            <h5><b><?=$inf_buque['nombrecom']?></b> </h5>
+                            <label>Razon Social</label>
+                            <h5><b><?=$inf_buque['nombre_proveedor']?></b> </h5>
                         </div>
-                        <div class="form-group col-2" style="font-size:20px">
-                            <label>Telefono</label>
-                            <h5><b><?=$inf_buque['tele_1']?></b> </h5>
-                        </div>
-                        <div class="form-group col-4" style="font-size:20px">
-                            <label>Embarcación/Matricula</label>
-                            <h5><b><?=$inf_buque['nombrebuque']?>/<?=$inf_buque['matricula']?></b> </h5>
-                        </div>
+                    
+                         
                         <div class="col-4"></div>
                         <div class="form-group col-2" style="font-size:20px">
-                            <label>Pies</label>
-                            <h5><b><?=$inf_buque['pies']?></b> </h5>
-                        </div>
-                        
-                        <div class="form-group col-2" style="font-size:20px">
-                            <label>Tarifa $</label>
-                            <h5><b><?=$inf_buque['tarifa']?>$</b> </h5>
-                        </div>
-                        <div class="form-group col-2" style="font-size:20px">
-                            <label>Canon $</label>
-                            <h5><b><?=$inf_buque['canon']?>$</b> </h5>
-                        </div>
-                        <div class="form-group col-10 mt-4" style="font-size:20px">
-                            <label>Nota</label><b title=""
-                                        style="color:red">  * </b>
-                            <h5><b><?=$inf_buque['nota']?></b> </h5>
-                        </div>
-                        
+                            <label>Deuda</label>
+                            <h5><b><?=$inf_buque['total_mas_iva']?></b> </h5>
+                        </div>                        
 
                         <div class="col-12">
                             <hr style="border-top: 1px solid rgba(0, 0, 0, 0.39);">
@@ -107,20 +84,22 @@
                                         <th>Forma de pago</th>
                                         <th>Nro. Referencia</th>
                                         <th>Total Pagado $</th>
-                                        <th>Total Pagado Bs.f</th>
-                                        <th>Restante $</th>
-                                        <th>Restante Bs.f</th>
+                                        <th>Fecha de pago</th>
+
+                                       
+                                        <!-- <th>Restante $</th>
+                                        <th>Restante Bs.f</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach($inf_pago as $lista):?>
                                         <tr class="odd gradeX">
                                             <td><?=$lista['descripcion']?></td>
-                                            <td><?=$lista['nro_referencia']?></td>
-                                            <td><?=$lista['total_abonado_om']?></td>
-                                            <td><?=$lista['total_abonado_bs']?></td>
-                                            <td>0</td>
-                                            <td>0</td>
+                                            <td><?=$lista['num_ref']?></td>
+                                            <td><?=$lista['total']?></td>
+                                            <td><?=date("d-m-Y", strtotime($lista['fecha_reg']));?></td>
+
+                                          
                                         </tr>
                                     <?php endforeach;?>
                                 </tbody>

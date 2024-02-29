@@ -244,7 +244,7 @@ class Reporte extends CI_Controller {
 		$desde     = $this->input->post("desde");
         $data['desde'] = date('Y-m-d', strtotime($desde));
 		$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
-	//	$this->form_validation->set_rules('t_pago', 't_pago', 'required|callback_select_validate');
+	   //	$this->form_validation->set_rules('t_pago', 't_pago', 'required|callback_select_validate');
 		$this->form_validation->set_rules('hasta', 'Fecha hasta', 'required|min_length[1]');
 		$this->form_validation->set_rules('desde', 'Fecha Desde ', 'required|min_length[1]');
 
@@ -484,4 +484,77 @@ class Reporte extends CI_Controller {
 
 
 	}
+
+		//Reporte por cuentas por Cliente
+		public function cxc_cliente(){
+			if(!$this->session->userdata('session'))redirect('login');
+			$hasta     = $this->input->post("hasta");
+			$desde     = $this->input->post("desde");
+			$data['desde'] = date('Y-m-d', strtotime($desde));
+			$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+		   //	$this->form_validation->set_rules('t_pago', 't_pago', 'required|callback_select_validate');
+			$this->form_validation->set_rules('hasta', 'Fecha hasta', 'required|min_length[1]');
+			$this->form_validation->set_rules('desde', 'Fecha Desde ', 'required|min_length[1]');
+	
+			if ($this->form_validation->run() == FALSE) {
+	
+					$data['descripcion'] = $this->session->userdata('unidad');
+					$data['rif'] 		 = $this->session->userdata('rif');
+					$data['clientes']  = $this->Reporte_model->clientes();    
+					$this->load->view('templates/header.php');
+					$this->load->view('templates/navigator.php');
+					$this->load->view('Reporte/cxc_cliente/cxc_cliente_u.php', $data);
+					$this->load->view('templates/footer.php');
+				} else {
+					$data['cliente']=	$this->input->post("cliente");
+					$data['descripcion'] = $this->session->userdata('unidad');
+					$data['rif'] 		 = $this->session->userdata('rif');
+	
+					$data['results'] 	 =	$this->Reporte_model->consultar_cxc_client($data);
+					$data['results_2'] 	 =	$this->Reporte_model->consultar_cxc_client3($data);
+					$data['desde'] = date('Y-m-d', strtotime($desde));
+					$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+					$this->load->view('templates/header.php');
+					$this->load->view('templates/navigator.php');
+					$this->load->view('Reporte/cxc_cliente/resul_cxc_cliente.php', $data, );
+					$this->load->view('templates/footer.php');
+			}
+		
+		}
+		//Reporte por productos despachados a clientes
+		public function prod_desp_client(){
+			if(!$this->session->userdata('session'))redirect('login');
+			$hasta     = $this->input->post("hasta");
+			$desde     = $this->input->post("desde");
+			$data['desde'] = date('Y-m-d', strtotime($desde));
+			$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+		   //	$this->form_validation->set_rules('t_pago', 't_pago', 'required|callback_select_validate');
+			$this->form_validation->set_rules('hasta', 'Fecha hasta', 'required|min_length[1]');
+			$this->form_validation->set_rules('desde', 'Fecha Desde ', 'required|min_length[1]');
+	
+			if ($this->form_validation->run() == FALSE) {
+	
+					$data['descripcion'] = $this->session->userdata('unidad');
+					$data['rif'] 		 = $this->session->userdata('rif');
+					$data['producto']  = $this->Reporte_model->producto();    
+					$this->load->view('templates/header.php');
+					$this->load->view('templates/navigator.php');
+					$this->load->view('Reporte/despachos_pd_cli/despachos_prod_clien.php', $data);
+					$this->load->view('templates/footer.php');
+				} else {
+					$data['producto']=	$this->input->post("producto");
+					$data['descripcion'] = $this->session->userdata('unidad');
+					$data['rif'] 		 = $this->session->userdata('rif');
+	
+					$data['results'] 	 =	$this->Reporte_model->consultar_despacho_pd_clien($data);
+					//$data['results_2'] 	 =	$this->Reporte_model->consultar_cxc_client3($data);
+					$data['desde'] = date('Y-m-d', strtotime($desde));
+					$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+					$this->load->view('templates/header.php');
+					$this->load->view('templates/navigator.php');
+					$this->load->view('Reporte/despachos_pd_cli/resul_despacho_prod_clien.php', $data, );
+					$this->load->view('templates/footer.php');
+			}
+		
+		}
 }

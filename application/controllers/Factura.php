@@ -8,6 +8,11 @@ class Factura extends CI_Controller {
 	   	$data =	$this->Factura_model->cons_nro_factura();
 	   	echo json_encode($data);
     }
+    public function cons_nro_compra(){
+        if(!$this->session->userdata('session'))redirect('login');
+	   	$data =	$this->Factura_model->cons_nro_compra();
+	   	echo json_encode($data);
+    }
 
 
     public function Fac(){		
@@ -220,9 +225,11 @@ class Factura extends CI_Controller {
             "total_mas_iva" => $this->input->post('total_mas_iva'),
             "total_bs"      => 0,
             "fecha_crear"  => date("Y-m-d"),
-            "id_status"     => 0,
+            "id_status"     => 0,//activo
             "fecha_update"  => date("Y-m-d"),
             "tipo_pago" => $this->input->post('id_tipo_pago'),
+            "forma_pago"     => 0,//no ha pagado 
+
 
         );
 
@@ -493,4 +500,109 @@ class Factura extends CI_Controller {
         $data = $this->Programacion_model->anular_trasitos($data);
         echo json_encode($data);
     }
+    //Recibo
+    public function compras(){
+		
+		if(!$this->session->userdata('session'))redirect('login');
+        $data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] = $this->session->userdata('rif');
+        $data['ver_proyectos'] = $this->Programacion_model->consultar_proyectos();
+        $data['time']=date("d-m-Y");
+        $data['fuente'] = $this->Programacion_model->consulta_part_pres();
+        $data['tarifa'] = $this->Productos_model->read_lis();
+        $data['descuento'] = $this->Productos_model->read_descu();
+
+        
+        $data['mat'] = $this->Proveedor_model->Consulta_proveedor();
+        $data['iva'] 	= $this->Programacion_model->consulta_iva();
+        $data['dolar'] 	= $this->Programacion_model->consulta_dolar();
+        $data['banco'] 	= $this->Programacion_model->consulta_banco();
+   
+       
+
+        $data['banco'] = $this->Mensualidades_model->ver_banco(); 
+        $data['tipoPago'] = $this->Mensualidades_model->ver_tipPago(); 
+		$this->load->view('templates/header.php');
+        $this->load->view('templates/navigator.php');
+		$this->load->view('compras/i_compras.php', $data);
+        $this->load->view('templates/footer.php');
+	}
+    public function registrar_compra(){
+        if(!$this->session->userdata('session'))redirect('login');
+      
+        $acc_cargar = 1;    
+        $nombre     = $this->input->post("nombre_proveedor");
+        $cedula  = $this->input->post("cedula");
+        $matricula  = $this->input->post("matricular");
+      //  $tele_1     = $this->input->post("tele_1");
+        $numfact     = $this->input->post("numfact");    
+
+       /* $dato = $_POST['radio_css'];
+
+		if ($dato == 1){
+			$bolivares = 'Efectivo';
+			$petros  = '';
+			$dolar  = '';
+			$euro  = '';
+			$otro  = '';
+		}elseif ($dato == 5){
+			$bolivares = '';
+			$petros  = '';
+			$dolar  = '';
+			$euro  = '';
+			$otro  = 'Trasferencia';
+		}*/
+        $dato1 = array(
+            "nro_factura"   => $this->input->post('numfact'),
+            "id_proveedor"        => $this->input->post('id_proveedor'),
+            "n_fac_proveedor"        => $this->input->post('n_fac_proveedor'),
+
+         //   "tele_1"        => $this->input->post('tele_1'),
+            "total_iva"     => $this->input->post('total_iva'),
+            "total_mas_iva" => $this->input->post('total_mas_iva'),
+            "total_bs"      => 0,
+           // "fecha_crear"  => date("Y-m-d"),
+            "id_status"     => 0,//activo
+            "fecha_update"  => date("Y-m-d"),
+            "tipo_pago" => $this->input->post('id_tipo_pago'),
+            "forma_pago"     => 0,//no ha pagado 
+
+
+        );
+
+        $p_items = array( 
+            'cantidad'   		    => $this->input->post('pies'),
+            'code1'          	    => $this->input->post('code1'),
+            'cot_u'            => $this->input->post('cot_u'),
+            'sub_t' 	            => $this->input->post('sub_t'), 
+            'id_des' 	            => $this->input->post('id_des'),  
+            't_desc' 	            => $this->input->post('t_desc'),  
+            'total' 	        => $this->input->post('canon'), 
+            'cedula' 	    => $this->input->post('matricularr'),        
+        );
+
+        $data = $this->Factura_model->save_compra($acc_cargar,$dato1,$p_items);
+        echo json_encode($data);
+        
+
+    }
+    public function ver_compra(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] = $this->session->userdata('rif');
+        $data['ver_proyectos'] = $this->Programacion_model->consultar_proyectos();
+        $data['time']=date("d-m-Y");
+        
+        $id_factura = $this->input->get('id');
+
+        $data['factura_ind'] = $this->Factura_model->ver_comprs1($id_factura);
+        $data['factura_ind_tabla'] = $this->Factura_model->ver_recibo_tabla_compra($id_factura);
+        
+        $this->load->view('templates/header.php');
+        
+        $this->load->view('templates/navigator.php');
+        $this->load->view('compras/ver_compra', $data);
+        $this->load->view('templates/footer.php');
+    }
+
 }

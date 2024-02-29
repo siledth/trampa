@@ -1,7 +1,7 @@
 $(document).ready(function() {
     //para consultar y crear el numero de factura modifique
     var base_url =
-        window.location.origin + "/marina/index.php/Mensualidades/cons_nro_factur";
+        window.location.origin + "/trampa/index.php/Mensualidades/cons_nro_factur";
 
     $.ajax({
         url: base_url,
@@ -37,10 +37,10 @@ function modal(id) {
     var id_mensualidad = id;
 
     var base_url =
-        window.location.origin + "/marina/index.php/Mensualidades/consultar_mens";
+        window.location.origin + "/trampa/index.php/Mensualidades/consultar_mens";
 
     var base_url2 =
-        window.location.origin + "/marina/index.php/Mensualidades/consultar_dol";
+        window.location.origin + "/trampa/index.php/Mensualidades/consultar_dol";
 
     $.ajax({
         url: base_url,
@@ -49,11 +49,13 @@ function modal(id) {
         dataType: "json",
         success: function(data) {
             $("#id_mesualidad_ver").val(id_mensualidad);
-            $("#matricula").val(data["matricula"]);
-            $("#pies").val(data["pies"]);
-            $("#tarifa").val(data["id_tarifa"]);
-            $("#dias").val(data["dia"]);
-            $("#canon").val(data["canon"]);
+            $("#numero_factura").val(data["n_fac_proveedor"]);
+            $("#pies").val(data["nombre_proveedor"]);
+            $("#tarifa").val(data["rif_proveedor"]);
+            $("#tarifa").val(data["rif_proveedor"]);
+
+            // $("#dias").val(data["dia"]);
+            $("#canon").val(data["total_mas_iva"]);
 //esto cambie
             let canon = data["canon"];
             // var newstr5 = canon.replace(".", "");
@@ -212,16 +214,17 @@ function guardar_proc_pago() {
             confirmButtonText: "¡Si, guardar!",
         })
         .then((result) => {
-            if (document.guardar_proc_pag.dolar.value.length==0){
-                alert("No Puede dejar el campo Valor Dolar vacio, Ingrese un Monto")
-                document.guardar_proc_pag.dolar.focus()
-                return 0;
-         } 
-            if (document.guardar_proc_pag.cantidad_pagar_otra.value.length==0){
-                alert("No Puede dejar el campo la Cantidad a pagar $ vacio, Ingrese un Monto")
-                document.guardar_proc_pag.cantidad_pagar_otra.focus()
-                return 0;
-         }     	if (document.guardar_proc_pag.id_tipo_pago.selectedIndex==0){
+        //     if (document.guardar_proc_pag.dolar.value.length==0){
+        //         alert("No Puede dejar el campo Valor Dolar vacio, Ingrese un Monto")
+        //         document.guardar_proc_pag.dolar.focus()
+        //         return 0;
+        //  } 
+        //     if (document.guardar_proc_pag.cantidad_pagar_otra.value.length==0){
+        //         alert("No Puede dejar el campo la Cantidad a pagar $ vacio, Ingrese un Monto")
+        //         document.guardar_proc_pag.cantidad_pagar_otra.focus()
+        //         return 0;
+        //  }     
+         	if (document.guardar_proc_pag.id_tipo_pago.selectedIndex==0){
             alert("Debe seleccionar un Tipo de pago.")
             document.guardar_proc_pag.id_tipo_pago.focus()
             return 0;
@@ -231,11 +234,11 @@ function guardar_proc_pago() {
                 var datos = new FormData($("#guardar_proc_pag")[0]);
                 var base_url =
                     window.location.origin +
-                    "/marina/index.php/Mensualidades/guardar_proc_pag";
+                    "/trampa/index.php/Mensualidades/guardar_proc_pag";
                 var base_url_2 =
-                    window.location.origin + "/marina/index.php/Mensualidades/ver";
+                    window.location.origin + "/trampa/index.php/Mensualidades/ver";
                     var base_url_3 =
-                    window.location.origin + "/marina/index.php/Mensualidades/verPago?id=";
+                    window.location.origin + "/trampa/index.php/Mensualidades/verPago?id=";
                 $.ajax({
                     url: base_url,
                     method: "POST",

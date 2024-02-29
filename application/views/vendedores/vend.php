@@ -1,6 +1,6 @@
 <div class="sidebar-bg"></div>
 <div id="content" class="content">
-    <h2>Crear Clientes</h2>
+    <h2>Modulo de Vendedores</h2>
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-inverse" data-sortable-id="form-validation-1">
@@ -11,15 +11,15 @@
 
                             <div class="row">
                                 <div class="form-group col-4">
-                                    <label>Rif<b title="Campo Obligatorio" style="color:red">*</b></label>
-                                    <input type="text" id="rif" name="rif" onkeyup="mayusculas(this);" maxlength="70"
-                                        class="form-control" placeholder="Ingrese Rif">
+                                    <label>Rif-Cedula<b title="Campo Obligatorio" style="color:red">*</b></label>
+                                    <input type="number" id="rif" name="rif" onkeyup="mayusculas(this);" maxlength="10"
+                                        class="form-control" placeholder="Ingrese Rif- Cedula">
 
                                 </div>
                                 <div class="form-group col-8">
-                                    <label>Razón Social <b title="Campo Obligatorio" style="color:red">*</b></label>
-                                    <input type="text" id="nombre_clien" name="nombre_clien" onkeyup="mayusculas(this);"
-                                        maxlength="70" class="form-control" placeholder="Ingrese Razón Social">
+                                    <label>Nombres y Apellidos <b title="Campo Obligatorio" style="color:red">*</b></label>
+                                    <input type="text" id="nombre_vend" name="nombre_vend" onkeyup="mayusculas(this);"
+                                        maxlength="100" class="form-control" placeholder="Ingrese Nombres y Apellidos">
 
                                 </div>
 
@@ -28,43 +28,23 @@
                         <br>
                         <fieldset class="border border-success p-20 shadow-lg">
                             <div class="row">
-                                <div class="form-group col-3">
+                                <div class="form-group col-6">
 
                                     <label>Dirección</label>
                                     <textarea class="form-control" id="direccion_fiscal" name="direccion_fiscal"
-                                        rows="3" cols="125"></textarea>
+                                    rows="3" cols="50" maxlength="100"></textarea>
                                 </div>
-                                <div class="form-group col-4">
-
-                                    <label>Telefono de Contacto</label>
+                                <div class="form-group col-6">
+                                    <label>Teléfono de Contacto</label>
                                     <input id="telefono" name="telefono"  
                                           class="form-control">
-                                </div>
-                                <div class="form-group col-4">
-
-                                    <label>Limite de Credito $</label>
-                                    <input id="limitecredito"  type="number" name="limitecredito"  
-                                        class="form-control">
-                                </div> 
-                                <div class=" col-3 form-group">
-                                    <label>Seleccione Vendedor<b title="Campo Obligatorio"
-                                            style="color:red">*</b></label>
-                                    <select id="id_vendedor" name="id_vendedor" class="default-select2 form-control"
-                                        required> 
-                                        <option value="1">Seleccione</option>
-
-                                        <?php foreach ($read as $data): ?>
-                                        <option value="<?=$data['id_vendedor']?>"><?=$data['nombre_vendedor']?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-
                                 </div>
                             </div>
                         </fieldset>
 
                     </div>
                     <div class="form-group col 12 text-center">
-                        <button type="button" onclick="guardar_b();" id="guardad_produc" name="guardad_produc"
+                        <button type="button" onclick="guardar_b();" id="guardar_vendedor" name="guardar_vendedor"
                             class="my-button">Guardar</button>
                     </div>
                     </from>
@@ -81,29 +61,27 @@
                         <thead style="background:#01cdb2">
                             <tr style="text-align:center">
                                 <th style="color:white;">N°</th>
-                                <th style="color:white;">Razón Social</th>
+                                <th style="color:white;">Nombre</th>
                                 <th style="color:white;">Rif</th>
                                 <th style="color:white;">Dirección</th>
-                                <th style="color:white;">Vendedor</th>
-
-
+                                <th style="color:white;">Teléfono</th>
                                 <th style="color:white;">Acción</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($list as $data):?>
                             <tr class="odd gradeX" style="text-align:center">
-                                <td><?=$data['id_cliente']?> </td>
-                                <td><?=$data['nombre_clien']?> </td>
-                                <td><?=$data['rif_clien']?> </td>
-                                <td><?=$data['direccion']?> </td>
+                                <td><?=$data['id_vendedor']?> </td>
                                 <td><?=$data['nombre_vendedor']?> </td>
+                                <td><?=$data['rif_vendedor']?> </td>
+                                <td><?=$data['direccion']?> </td>
+                                <td><?=$data['telefono']?> </td>
 
 
 
 
                                 <td class="center">
-                                    <a onclick="modal(<?php echo $data['id_cliente'] ?>);" data-toggle="modal"
+                                    <a onclick="modal(<?php echo $data['id_vendedor'] ?>);" data-toggle="modal"
                                         data-target="#myModal_bienes" style="color: white">
                                         <i title="Editar" class="fas  fa-lg fa-fw fa-highlighter"
                                             style="color: darkgreen;"></i>
@@ -130,37 +108,15 @@
 
                         <input type="hidden" class="form-control" name="id_organoentes" id="id_organoentes">
                         <div class="form-group col-3">
-                            <label>RIF</label>
+                            <label>RIF-CEDULA</label>
                             <input class="form-control" type="hidden" name="id_organoente4" id="id_organoente4" readonly>
                             <input class="form-control" type="text" name="rif4" id="rif4" readonly>
 
                         </div>
                         <div class="form-group col-9">
-                            <label>Razón Social</label>
+                            <label>Nombres y Apellidos</label>
                             <input id="descripcion4" name="descripcion4" class="form-control" class="form-control"maxlength="250">
                         </div>                      
-                        <div class="form-group col-3">
-                            <label>Vendedor</label>
-                            <input type="text" class="form-control" name="descedo4" id="descedo4" disabled>
-                            <input type="hidden" name="id_estado4" id="id_estado4">
-                        </div>
-                        <div class="form-group col-3">
-                            <label> Cambiar Vendedor <i
-                                    title="Si quiere cambiar el vendedor"
-                                    class="fas fa-question-circle"></i></label>
-                                    <select class="form-control" name="cambio_edo" id="cambio_edo"
-                                        onclick="llenar_muni();">
-                                        <option value="0">Seleccione</option>
-                                    </select>
-                        </div>
-
-                       
-                     
-                        <div class="form-group col-3">
-                            <label>Limite de Credito $</label>
-                            <input type="number" class="form-control" id="limitecredito4" name="limitecredito4" onkeyup="validateMaxLength(this)" />
-                                <p id="errorMsg"></p>
-                        </div>
                         <div class="form-group col-6">
                         <label>Dirección Fiscal</label>
                         <textarea class="form-control" id="direccion_fiscal4" name="direccion_fiscal4" rows="2" cols="125"></textarea>
@@ -169,7 +125,20 @@
                             <label>Telefono local</label>
                             <input type="number" class="form-control" id="tel14" name="tel14" onkeyup="validateMaxLength(this)" />
                                 <p id="errorMsg"></p>
-                        </div>                  
+                        </div>  
+                        <div class="form-group col-3">
+                            <label>Estatus Del Vendedor</label>
+                            <input type="text" class="form-control" name="descedo4" id="descedo4" disabled>
+                            <input type="hidden" name="status" id="status">
+                        </div>
+                        <div class="form-group col-3">
+                            <label> Cambiar Estatus <i
+                                    title="Si quiere cambiar el estatus seleccionar"
+                                    class="fas fa-question-circle"></i></label>
+                                    <select class="form-control" name="cambio_edo" id="cambio_edo">
+                                        <option value="0">Seleccione</option>
+                                    </select>
+                        </div>                
                       
                     </div>
                     <div class="modal-footer">
@@ -181,7 +150,7 @@
             </div>
         </div>
     </div>
-    <script src="<?=base_url()?>/js/cliente/cliente.js">
+    <script src="<?=base_url()?>/js/vendedores/vendedores.js">
 
 
 

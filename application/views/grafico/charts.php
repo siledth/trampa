@@ -23,7 +23,7 @@
                     <?php endforeach; ?>
                 ],
                 datasets: [{
-                    label: 'Total Sold',
+                    label: 'Producto ',
                     data: [
                         <?php foreach ($top_products as $product): ?>
                             <?php echo $product->total_sold; ?>,

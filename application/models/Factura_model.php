@@ -80,9 +80,11 @@
                         e.id_status,                        
                         e.descripcion as estatus,
                       p.descripcion as tipo_p,
-                      p.id_tipo_pago");
+                      p.id_tipo_pago, c.direccion");
         $this->db->join('estatus e', 'e.id_status = f.id_status', 'left');
         $this->db->join('tipopago p', 'p.id_tipo_pago = f.tipo_pago', 'left');
+        $this->db->join('public.cliente c', 'c.rif_clien = f.cedula', 'left');
+
 
         $this->db->where('f.id',$data);
         $query = $this->db->get('recibo f');

@@ -22,20 +22,24 @@
                             </div>
                             <div class="col-9 mt-1">
                                 <div class="text-center bg-white">
-                                    <h3 class="mt-1"> <b><?=$descripcion?></b></h3>
+                                    <h4 class="mt-1"> <b><?=$descripcion?></b></h4>
                                     <h4>RIF.:<b> <?=$rif?></b></h4>
                                     <h4>Fecha Impresión: <?=$time ?> </h4>
                                     <div class="form-group col-6 float-right">
-                                    <h3><b>Tipo de Pago: <?=$factura_ind['tipo_p']?></b></h3>
+                                        <h4><b>Tipo de Pago: <?=$factura_ind['tipo_p']?></b></h4>
 
                                     </div>
                                     <div class="form-group col-2 float-right">
-                                    <h3><b>ORIGINAL</b> </h3>
-                                    
+                                        <h4><b>ORIGINAL</b> </h4>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-3">
+                            <div class="form-group col-2">
+                                <h4>Fecha Recibo <b title="Campo Obligatorio" style="color:red"></b> </h4>
+                                <h4><b><?= date("d/m/Y", strtotime($factura_ind['fecha_crear']));?></b> </h4>
+                            </div>
+                            <div class="form-group col-2">
                                 <h4>Razón Social </h4>
                                 <h4><b><?=$factura_ind['nombre']?></b> </h4>
                             </div>
@@ -44,15 +48,16 @@
                                 <h4><b><?=$factura_ind['cedula']?></b> </h4>
                             </div>
                             <div class="form-group col-2">
+                                <h4>Dirección </h4>
+                                <h4><b><?=$factura_ind['direccion']?></b> </h4>
+                            </div>
+                            <div class="form-group col-2">
                                 <h4>N° Recibo <b title="Campo Obligatorio" style="color:red"></b> </h4>
                                 <h4><b><?=$factura_ind['nro_factura']?></b> </h4>
                             </div>
+
                             <div class="form-group col-2">
-                                <h4>Fecha Recibo <b title="Campo Obligatorio" style="color:red"></b> </h4>
-                                <h4><b><?= date("d/m/Y", strtotime($factura_ind['fecha_crear']));?></b> </h4>
-                            </div>
-                            <div class="form-group col-2">
-                                <h4>Telefono <b title="Campo Obligatorio" style="color:red"></b> </h4>
+                                <h4>Teléfono <b title="Campo Obligatorio" style="color:red"></b> </h4>
                                 <h4><b><?=$factura_ind['tele_1']?></b> </h4>
                             </div>
                             <div class="col-12 text-center">
@@ -91,17 +96,20 @@
                                 </table>
                             </div>
                             <div class="col-6"></div>
-                          
+
                             <div class="col-6"></div>
-                          
-                                    <div class="form-group col-6 float-right">
-                                    <h5><b>Trasferencia:Banco Provincial 0108-0034090100409149 CI 18110915 </b> </h5>
-                                    <h5><b>Pago Movil:Banco Provincial, CI 18110915, Tel 04143322413</b> </h5>
-                                    </div>
-                                    <div class="form-group col-6 float-right">
-                                      <h3><b>      Total $: <?=$factura_ind['total_mas_iva']?>$</b></h3>
+
+                            <div class="form-group col-6 float-right">
+                                <h5><b>Trasferencia:Banco Provincial 0108-0034090100409149 CI 18110915 </b> </h5>
+                                <h5><b>Pago Movil:Banco Provincial, CI 18110915, Tel 04143322413</b> </h5>
                             </div>
-                            
+                            <div class="form-group col-3 float-right">
+                                 
+                            </div>
+                            <div class="form-group col-3 float-right">
+                                <h3><b> Total $: <?=$factura_ind['total_mas_iva']?>$</b></h3>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-12">
@@ -115,20 +123,24 @@
                             </div>
                             <div class="col-9 mt-1">
                                 <div class="text-center bg-white">
-                                    <h3 class="mt-1"> <b><?=$descripcion?></b></h3>
+                                    <h4 class="mt-1"> <b><?=$descripcion?></b></h4>
                                     <h4>RIF.:<b> <?=$rif?></b></h4>
                                     <h4>Fecha Impresión: <?=$time ?> </h4>
                                     <div class="form-group col-6 float-right">
-                                    <h3><b>Tipo de Pago: <?=$factura_ind['tipo_p']?></b></h3>
+                                        <h4><b>Tipo de Pago: <?=$factura_ind['tipo_p']?></b></h4>
 
                                     </div>
                                     <div class="form-group col-4 float-right">
-                                    <h3><b>Copia del Cliente</b> </h3>
-                                    
+                                        <h4><b>Copia del Cliente</b> </h4>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-3">
+                            <div class="form-group col-2">
+                                <h4>Fecha Recibo <b title="Campo Obligatorio" style="color:red"></b> </h4>
+                                <h4><b><?= date("d/m/Y", strtotime($factura_ind['fecha_crear']));?></b> </h4>
+                            </div>
+                            <div class="form-group col-2">
                                 <h4>Razón Social </h4>
                                 <h4><b><?=$factura_ind['nombre']?></b> </h4>
                             </div>
@@ -137,16 +149,16 @@
                                 <h4><b><?=$factura_ind['cedula']?></b> </h4>
                             </div>
                             <div class="form-group col-2">
+                                <h4>Dirección </h4>
+                                <h4><b><?=$factura_ind['direccion']?></b> </h4>
+                            </div>
+                            <div class="form-group col-2">
                                 <h4>N° Recibo <b title="Campo Obligatorio" style="color:red"></b> </h4>
                                 <h4><b><?=$factura_ind['nro_factura']?></b> </h4>
                             </div>
-                            <div class="form-group col-2">
-                                <h4>Fecha Recibo <b title="Campo Obligatorio" style="color:red"></b> </h4>
-                                <h4><b><?= date("d/m/Y", strtotime($factura_ind['fecha_crear']));?></b> </h4>
 
-                            </div>
                             <div class="form-group col-2">
-                                <h4>Telefono <b title="Campo Obligatorio" style="color:red"></b> </h4>
+                                <h4>Teléfono <b title="Campo Obligatorio" style="color:red"></b> </h4>
                                 <h4><b><?=$factura_ind['tele_1']?></b> </h4>
                             </div>
                             <div class="col-12">
@@ -193,14 +205,17 @@
                             </div>
                             <div class="col-6"></div>
                             <div class="col-6"></div>
-                        
-                                  <div class="form-group col-6 float-right">
-                                  <h5><b>Trasferencia:Banco Provincial 0108-0034090100409149 CI 18110915 </b> </h5>
-                                  <h5><b>Pago Movil:Banco Provincial, CI 18110915, Tel 04143322413</b> </h5>
-                                  </div>
-                                  <div class="form-group col-6 float-right">
-                                    <h3><b>      Total $: <?=$factura_ind['total_mas_iva']?>$</b></h3>
-                          </div>
+
+                            <div class="form-group col-6 float-right">
+                                <h5><b>Trasferencia:Banco Provincial 0108-0034090100409149 CI 18110915 </b> </h5>
+                                <h5><b>Pago Movil:Banco Provincial, CI 18110915, Tel 04143322413</b> </h5>
+                            </div>
+                            <div class="form-group col-3 float-right">
+                                 
+                            </div>
+                            <div class="form-group col-3 float-right">
+                                <h3><b> Total $: <?=$factura_ind['total_mas_iva']?>$</b></h3>
+                            </div>
                         </div>
                     </div>
                 </div>

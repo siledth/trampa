@@ -59,6 +59,19 @@
                                     </select>
 
                                 </div>
+                                <div class=" col-3 form-group">
+                                    <label>Seleccione Ruta<b title="Campo Obligatorio"
+                                            style="color:red">*</b></label>
+                                    <select id="id_ruta" name="id_ruta" class="default-select2 form-control"
+                                        required> 
+                                        <option value="1">Seleccione</option>
+
+                                        <?php foreach ($ruta as $data): ?>
+                                        <option value="<?=$data['id']?>"><?=$data['nombre_ruta']?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+
+                                </div>
                             </div>
                         </fieldset>
 
@@ -153,9 +166,21 @@
                                         <option value="0">Seleccione</option>
                                     </select>
                         </div>
-
+                        <div class="form-group col-3">
+                            <label>Ruta</label>
+                            <input type="text" class="form-control" name="name_r4" id="name_r4" disabled>
+                            <input type="hidden" name="id_ruta4" id="id_ruta4">
+                        </div>
                        
-                     
+                        <div class="form-group col-3">
+                            <label> Cambiar Ruta <i
+                                    title="Si quiere cambiar la ruta"
+                                    class="fas fa-question-circle"></i></label>
+                                    <select class="form-control" name="cambio_ruta" id="cambio_ruta"
+                                        onclick="llenar_muni();">
+                                        <option value="0">Seleccione</option>
+                                    </select>
+                        </div>
                         <div class="form-group col-3">
                             <label>Limite de Credito $</label>
                             <input type="number" class="form-control" id="limitecredito4" name="limitecredito4" onkeyup="validateMaxLength(this)" />

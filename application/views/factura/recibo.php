@@ -11,7 +11,7 @@
                             <div class="col-10 mt-2">
                                 <div class="card card-outline-danger text-center bg-white">
                                     <h4 class="mt-2"> <b><?=$descripcion?></b></h4>
-                                    <h5>RIF.: <?=$rif?></h5>
+                             
                                     <h5>Fecha.: <?=$time ?> </h5>
                                 </div>
                             </div>
@@ -41,6 +41,8 @@
                                     </div>
                                     <div class="col-3">
                                         <label>Cédula</label>
+                                        <input type="hidden" name="id_cliente" id="id_cliente" class="form-control" readonly>
+
                                         <input type="text" name="cedula" id="cedula" class="form-control" readonly>
                                     </div>
                                     <div class="col-3">

@@ -9,13 +9,15 @@ $('#matricular').on('select2:select', function (e) {
         dataType:'json',
 
         success: function(response){
+            $("#id_cliente").val(response['id_cliente']);
+
             $("#cedula").val(response['rif_clien']);
             $("#nombre").val(response['nombre_clien']);
             $("#direccion").val(response['direccion']);
             $("#limitecredito").val(response['limitecredito']);
             $("#id_vendedor").val(response['id_vendedor']);
             $("#nombre_vendedor").val(response['nombre_vendedor']);
-            $("#pies").val(response['limitecredito']);
+            //$("#pies").val(response['limitecredito']);//
             $("#tele_1").val(response['telefono']);
         }
     });

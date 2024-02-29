@@ -25,6 +25,8 @@
         $data1 = array(
             'id'		    => $id1,
             'nro_factura' => $dato1['nro_factura'],
+            'id_cliente' => $dato1['id_cliente'],
+
             'nombre' => $dato1['nombre'],
             'cedula' => $dato1['cedula'],
             'tele_1' => $dato1['tele_1'],
@@ -61,6 +63,8 @@
                         't_desc' => $p_items['t_desc'][$i],
                         'total' 	     => $p_items['total'][$i],
                         'id_fact' 	     => $dato1['nro_factura'],
+                        'id_cliente' 	     => $dato1['id_cliente'],
+
                         
 
                     );

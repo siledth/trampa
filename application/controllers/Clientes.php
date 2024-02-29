@@ -6,6 +6,7 @@ class Clientes extends CI_Controller {
 	public function create_cl(){
 		if(!$this->session->userdata('session'))redirect('login');
 		$data['read'] = $this->Cliente_model->read_vend();
+		$data['ruta'] = $this->Cliente_model->read_ruta();
 		
         $data['list'] = $this->Cliente_model->listar_info_clien();
 
@@ -29,6 +30,8 @@ class Clientes extends CI_Controller {
                 'id_vendedor' => $this->input->post("id_vendedor"), 
                 'status' => 1,
 				'id_usuario' => $this->session->userdata('id_user'),
+                'id_ruta' => $this->input->post("id_ruta"),
+                
                 'fecha_creacion' => date("Y-m-d"),                
             );
       //  print_r($data1);die;
@@ -47,6 +50,12 @@ class Clientes extends CI_Controller {
         if(!$this->session->userdata('session'))redirect('login');
         $data = $this->input->post();
         $data =	$this->Cliente_model->llenar_vende($data);
+        echo json_encode($data);
+    }
+    public function llenar_ruta(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data = $this->input->post();
+        $data =	$this->Cliente_model->llenar_ruta($data);
         echo json_encode($data);
     }
     public function save_modif_org1(){

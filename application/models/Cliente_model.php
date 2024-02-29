@@ -11,6 +11,11 @@ class Cliente_model extends CI_Model
 
 
     }
+    public function read_ruta()
+         {   $this->db->select("id, nombre_ruta");
+            $query = $this->db->get('public.rutas');
+            return $result = $query->result_array();
+        }
     public function Consulta_cliente(){
     $this->db->select('c.id_cliente, c.nombre_clien, c.rif_clien');
     $this->db->from('public.cliente c');
@@ -62,6 +67,7 @@ class Cliente_model extends CI_Model
                 'status' 			=> $data1['status'],                    
                 'id_usuario' 			=> $data1['id_usuario'],                    
                 'fecha_creacion' 			=> $data1['fecha_creacion'],                    
+                'id_ruta' => $this->input->post("id_ruta"),
                
 
             );
@@ -73,9 +79,12 @@ class Cliente_model extends CI_Model
     }
 
     public function read_list($data){
-        $this->db->select('c.id_cliente, c.nombre_clien, c.rif_clien, c.direccion, c.telefono, c.limitecredito,c.id_vendedor,v.nombre_vendedor');
+        $this->db->select('c.id_cliente, c.nombre_clien, c.rif_clien, c.direccion, c.telefono, c.limitecredito,
+        c.id_vendedor,v.nombre_vendedor, r.nombre_ruta');
         $this->db->where('c.id_cliente', $data['id_cliente']);
+        
         $this->db->join('vendedor v', 'v.id_vendedor = c.id_vendedor', 'left');    
+        $this->db->join('rutas r', 'r.id = c.id_ruta', 'left');    
 
 		$this->db->from('public.cliente c');
  		// $this->db->order_by('mc.id_p_items desc');
@@ -89,6 +98,12 @@ class Cliente_model extends CI_Model
         $query = $this->db->get('public.vendedor');
         return $query->result_array();
     }
+    public function llenar_ruta($data){
+        $this->db->select("id, nombre_ruta");
+      //  $this->db->where('pi2.id !=', $data['id_estado']);
+        $query = $this->db->get('public.rutas');
+        return $query->result_array();
+    }
     public function save_modif_org1($data){
 
         $this->db->where('id_cliente', $data['id_cliente']);
@@ -99,6 +114,12 @@ class Cliente_model extends CI_Model
         }else {
             $id_vendedor = $data['cambio_edo'];
         } 
+        $pp_s = $data['cambio_ruta'];
+        if ($pp_s == 0) {
+            $id_ruta = $data['id_ruta'];
+        }else {
+            $id_ruta = $data['cambio_ruta'];
+        } 
        
         $data1 = array(
             'nombre_clien'        => $data['nombre_clien'],
@@ -108,6 +129,8 @@ class Cliente_model extends CI_Model
             'direccion'         => $data['direccion'],
             'telefono'         => $data['telefono'],
             'limitecredito'         => $data['limitecredito'],
+            'id_ruta'         => $id_ruta,
+
 
             
                 

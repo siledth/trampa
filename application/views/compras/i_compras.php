@@ -11,7 +11,7 @@
                             <div class="col-10 mt-2">
                                 <div class="card card-outline-danger text-center bg-white">
                                     <h4 class="mt-2"> <b><?=$descripcion?></b></h4>
-                                    <h5>RIF.: <?=$rif?></h5>
+                                  
                                     <h5>Fecha.: <?=$time ?> </h5>
                                 </div>
                             </div>

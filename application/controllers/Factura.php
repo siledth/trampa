@@ -217,6 +217,7 @@ class Factura extends CI_Controller {
 			$otro  = 'Trasferencia';
 		}*/
         $dato1 = array(
+            "id_cliente"   => $this->input->post('id_cliente'),
             "nro_factura"   => $this->input->post('numfact'),
             "nombre"        => $this->input->post('nombre'),
             "cedula"        => $this->input->post('cedula'),
@@ -241,7 +242,9 @@ class Factura extends CI_Controller {
             'id_des' 	            => $this->input->post('id_des'),  
             't_desc' 	            => $this->input->post('t_desc'),  
             'total' 	        => $this->input->post('canon'), 
-            'cedula' 	    => $this->input->post('matricularr'),        
+            'cedula' 	    => $this->input->post('matricularr'), 
+            'id_cliente' 	    => $this->input->post('id_cliente'),        
+
         );
 
         $data = $this->Factura_model->save_recibo($acc_cargar,$dato1,$p_items);

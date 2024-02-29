@@ -23,7 +23,7 @@
                             <div class="col-9 mt-1">
                                 <div class="text-center bg-white">
                                     <h3 class="mt-1"> <b><?=$descripcion?></b></h3>
-                                    <h4>RIF.:<b> <?=$rif?></b></h4>
+                                  
                                     <h4>Fecha Impresión: <?=$time ?> </h4>
                                     <div class="form-group col-6 float-right">
                                         <h3><b>Tipo de Pago: <?=$factura_ind['tipo_p']?></b></h3>

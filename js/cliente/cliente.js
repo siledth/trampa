@@ -35,11 +35,11 @@ function valideKey(evt) {
     }
 }
 function guardar_b(){
-    var code_p = $("#code_p").val();
-    var descripcion = $("#descripcion").val();
-    var quantity = $("#quantity").val();
-    var price_purchase = $("#price_purchase").val();
-    var price_sale = $("#price_sale").val();
+    var rif = $("#rif").val();
+    var nombre_clien = $("#nombre_clien").val();
+    var direccion_fiscal = $("#direccion_fiscal").val();
+    var telefono = $("#telefono").val();
+    var limitecredito = $("#limitecredito").val();
 
 
 
@@ -132,6 +132,8 @@ function modal(id) {
     var id_cliente = id;
     var base_url =window.location.origin+'/trampa/index.php/Clientes/read_list';
     var base_url2 =window.location.origin+'/trampa/index.php/Clientes/llenar_vende';
+    var base_url3 =window.location.origin+'/trampa/index.php/Clientes/llenar_ruta';
+
        
         // var base_url = '/index.php/Configuracion/read_list';
         //  var base_url2 = '/index.php/Configuracion/llenar_edo';
@@ -152,15 +154,11 @@ function modal(id) {
             
             $("#id_estado4").val(data["id_vendedor"]); 
             $("#descedo4").val(data["nombre_vendedor"]); 
+
+            $("#id_ruta4").val(data["id_ruta"]); 
+            $("#name_r4").val(data["nombre_ruta"]); 
            
-            
-
-
-
-
-                   
-
-
+         
 // llena el select de unidad de medida
             var id_estado = data['id_vendedor'];
              
@@ -172,6 +170,20 @@ function modal(id) {
             success: function(data){
                 $.each(data, function(index, data){
                     $('#cambio_edo').append('<option value="'+data['id_vendedor']+'">'+data['nombre_vendedor']+'</option>');
+
+                });
+            }
+        })
+        var id_estado = data['id_ruta'];
+             
+        $.ajax({
+            url:base_url3,
+            method: 'post',
+            data: {id_estado: id_estado},
+            dataType: 'json',
+            success: function(data){
+                $.each(data, function(index, data){
+                    $('#cambio_ruta').append('<option value="'+data['id']+'">'+data['nombre_ruta']+'</option>');
 
                 });
             }
@@ -204,7 +216,10 @@ function save_modif_org(){//////////////////////////////////////////accion centr
             var direccion = $('#direccion_fiscal4').val();
             var telefono = $('#tel14').val();
             var limitecredito = $('#limitecredito4').val();
-           
+
+            var id_ruta = $('#id_ruta4').val();
+            var cambio_ruta = $('#cambio_ruta').val();
+
             var base_url =window.location.origin+'/trampa/index.php/Clientes/save_modif_org1';
 
    
@@ -220,7 +235,8 @@ function save_modif_org(){//////////////////////////////////////////accion centr
                     direccion: direccion,
                     telefono: telefono,
                     limitecredito: limitecredito,
-
+                    id_ruta: id_ruta, 
+                    cambio_ruta: cambio_ruta,
                                      
 
                 },

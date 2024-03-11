@@ -59,6 +59,10 @@
                                 <h6>Teléfono <b title="Campo Obligatorio" style="color:red"></b> </h6>
                                 <h6><b><?=$factura_ind['tele_1']?></b> </h6>
                             </div>
+                            <div class="form-group col-2">
+                                <h6>Vendedor <b title="Campo Obligatorio" style="color:red"></b> </h6>
+                                <h6><b><?=$factura_ind['nombre_vendedor']?></b> </h6>
+                            </div>
                             <div class="col-12 text-center">
                                 <hr style="border-top: 1px solid rgba(0, 0, 0, 0.39);">
                                 <h4 style="color:red;">Detalle de Recibo</h4>
@@ -158,6 +162,10 @@
                             <div class="form-group col-2">
                                 <h6>Teléfono <b title="Campo Obligatorio" style="color:red"></b> </h6>
                                 <h6><b><?=$factura_ind['tele_1']?></b> </h6>
+                            </div>
+                            <div class="form-group col-2">
+                                <h6>Vendedor <b title="Campo Obligatorio" style="color:red"></b> </h6>
+                                <h6><b><?=$factura_ind['nombre_vendedor']?></b> </h6>
                             </div>
                             <div class="col-12">
                                 <hr style="border-top: 1px solid rgba(0, 0, 0, 0.39);">

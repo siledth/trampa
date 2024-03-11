@@ -593,12 +593,15 @@
             return $resultado;
         }
         public function consultar_cxc_client1($data){
-            $this->db->select('mc.*');
+            $this->db->select('mc.*, d.deuda_restante, d.id , c.id_vendedor, v.nombre_vendedor');
             $this->db->from('public.recibo mc');
-           // $this->db->join('proveedor b', 'b.id_proveedor = mc.id_proveedor ');
+            $this->db->join('detalle_pago_clientes d', 'd.id_factura = mc.id', 'left');
+            $this->db->join('cliente c', 'c.id_cliente = mc.id_cliente');
+            $this->db->join('vendedor v', 'v.id_vendedor = c.id_vendedor');
+
            
             $this->db->where('mc.id', $data['id_mensualidad']);
-            $this->db->order_by('mc.id desc');
+            $this->db->order_by('d.id desc');
             $query = $this->db->get();
             $resultado = $query->row_array();
             return $resultado;
@@ -609,7 +612,7 @@
             // }else {
             //     $id_estatus = 3;
             // }  
-
+                $id3=$data['id_mesualidad_ver']+0;
             if ($data['fechatrnas'] == '') {
                 $fecha_tranfer = date('Y-m-d');
             }else{
@@ -625,7 +628,7 @@
                     $id = $response['id1'] + 1 ;
                 }
             if ($response){
-            
+            if ($data['total_otra']==0) {
        
             
             $data1 = array(
@@ -638,6 +641,12 @@
                             'fecha_transf'        => $fecha_tranfer,
                             'total'       => $data['canon'],
                             'observacion'       => $data['nota'],
+                            'cantidad_pagada'       => $data['cantidad_pagar_otra'],
+                            'deuda_restante'       => $data['total_otra'],
+                          
+
+                            
+
 
 
                             // 'id_dolar'          => $data['id_dolar'],
@@ -661,17 +670,105 @@
                             
             $this->db->where('id', $data['id_mesualidad_ver']);
             $update = $this->db->update('recibo', $data1);
+           
+            $this->db->select('max(e.id) as id1');
+                $query1 = $this->db->get('public.detalle_pago_vendedores e');
+                $response = $query1->row_array();
+                if ($response === null) {
+                    $idv = '1';
+                }else{
+                    $idv = $response['id1'] + 1 ;
+                }
+            $data3 = array(
+                'id'     => $idv,
+                
+                'id_factura'     => $data['id_mesualidad_ver'],
+                'id_vendedor'      => $data['id_vendedor'],
+                'cantidad_pagar'      => $data['pg_vendedor'],
+                'estatus'       => 0,
 
+
+                
+                
+            );
+            $x = $this->db->insert('detalle_pago_vendedores',$data3);
+                    }
+                    else {
+                        $data1 = array(
+                            'id'     => $id,
+                            
+                            'id_factura'     => $data['id_mesualidad_ver'],
+                            'tipo_de_pago'      => $data['id_tipo_pago'],
+                            'num_ref'    => $data['nro_referencia'],
+                            'id_banco'          => $data['id_banco'],
+                            'fecha_transf'        => $fecha_tranfer,
+                            'total'       => $data['canon'],
+                            'observacion'       => $data['nota'],
+                            'cantidad_pagada'       => $data['cantidad_pagar_otra'],
+                            'deuda_restante'       => $data['total_otra'],
+
+
+                            // 'id_dolar'          => $data['id_dolar'],
+                            // 'valor'             => $data['dolar'],
+                            // 'total_ant_bs'      => $data['bs'],
+                            // 'total_abonado_bs'  => $data['cantidad_pagar_bs'],
+                            // 'total_abonado_om'  => $data['cantidad_pagar_otra'],
+                            // 'restante_bs'       => $data['total_bs_pag'],
+                            // 'restante_om'       => $data['total_otra'],
+                            // 'id_user'           => $this->session->userdata('id_user'),
+                            // 'id_estatus'        => $id_estatus
+                        );
+            $x = $this->db->insert('detalle_pago_clientes',$data1);
+            //aca modifique
+            $data1 = array('forma_pago' => 3,
+                            'fecha_update' => date('Y-m-d h:i:s'),
+                            //'nro_factura' => $data['numfact'],
+                          ///  'nota' => $data['nota'],
+                           // 'fechapago' => $data['fechapago'],
+                        );
+                            
+            $this->db->where('id', $data['id_mesualidad_ver']);
+            $update = $this->db->update('recibo', $data1);
+
+            $this->db->select('max(e.id) as id1');
+            $query1 = $this->db->get('public.detalle_pago_vendedores e');
+            $response = $query1->row_array();
+            if ($response === null) {
+                $idv = '1';
+            }else{
+                $idv = $response['id1'] + 1 ;
+            }
+                $data4 = array(
+                    'id'     => $idv,
+                    
+                    'id_factura'     => $data['id_mesualidad_ver'],
+                    'id_vendedor'      => $data['id_vendedor'],
+                    'cantidad_pagar'      => $data['pg_vendedor'],
+                    'estatus'       => 0,
+
+
+                    
+                    
+                );
+                $x = $this->db->insert('detalle_pago_vendedores',$data4);
+
+
+
+                    }
             //return true;
-            return $id;
+            return $id3;
         }
         }
         public function ver_nota_cliente($data){
-            $this->db->select("m.*,b.nombre, b.cedula,b.fecha_crear,b.total_mas_iva, e.descripcion as estatus");
+            $this->db->select("m.*,b.nombre, b.cedula,b.fecha_crear,b.total_mas_iva, e.descripcion as estatus, c.id_vendedor, v.nombre_vendedor");
             $this->db->from('public.detalle_pago_clientes m');
             $this->db->join('recibo b', 'b.id = m.id_factura');
-            $this->db->join('estatus e', 'e.id_status = b.forma_pago', 'left');
-            $this->db->where('m.id', $data);
+            $this->db->join('estatus e', 'e.id_status = b.forma_pago');
+            $this->db->join('cliente c', 'c.id_cliente = b.id_cliente');
+            $this->db->join('vendedor v', 'v.id_vendedor = c.id_vendedor');
+
+
+            $this->db->where('m.id_factura', $data);
            // $this->db->where('p.tipo', 'principal');
             $query = $this->db->get();
             $resultado = $query->row_array();
@@ -682,7 +779,7 @@
                                tp.id_tipo_pago as pago,
                                tp.descripcion');
             $this->db->from('detalle_pago_clientes mc');
-            $this->db->where('mc.id', $data);
+            $this->db->where('mc.id_factura', $data);
             $this->db->where('mc.tipo_de_pago !=', '0');
             $this->db->join('tipopago tp', 'tp.id_tipo_pago = mc.tipo_de_pago ');
             $query = $this->db->get();

@@ -237,6 +237,7 @@
                                     <li><a href="<?= base_url() ?>index.php/Reporte/cxc_cliente">Cuentas por Cobrar / por Cliente</a></li>
                                     <li><a href="<?= base_url() ?>index.php/Reporte/prod_desp_client">Productos despachados a Cliente</a></li>
 
+                                    <li><a href="<?= base_url() ?>index.php/Reporte/cxp_vendedores">Cxp vendedores</a></li>
 
                                     <!-- <li><a href="<?= base_url() ?>index.php/Reporte/ubicaci">Ubicacion</a></li> -->
                                     <!-- <li><a href="<?= base_url() ?>index.php/Reporte/ubicaciones">Ubicación Detallada</a></li>

@@ -67,9 +67,13 @@
                          
                         <div class="col-4"></div>
                         <div class="form-group col-2" style="font-size:20px">
-                            <label>Deuda</label>
+                            <label>Total Deuda</label>
                             <h5><b><?=$inf_client['total_mas_iva']?></b> </h5>
-                        </div>                        
+                        </div>  
+                        <div class="form-group col-2" style="font-size:20px">
+                            <label>vendedor</label>
+                            <h5><b><?=$inf_client['nombre_vendedor']?></b> </h5>
+                        </div>                       
 
                         <div class="col-12">
                             <hr style="border-top: 1px solid rgba(0, 0, 0, 0.39);">
@@ -84,6 +88,8 @@
                                         <th>Forma de pago</th>
                                         <th>Nro. Referencia</th>
                                         <th>Total Pagado $</th>
+                                        <th>Deuda Restante $</th>
+
                                         <th>Fecha de pago</th>
 
                                        
@@ -96,7 +102,9 @@
                                         <tr class="odd gradeX">
                                             <td><?=$lista['descripcion']?></td>
                                             <td><?=$lista['num_ref']?></td>
-                                            <td><?=$lista['total']?></td>
+                                            <td><?=$lista['cantidad_pagada']?></td>
+                                            <td><?=$lista['deuda_restante']?></td>
+
                                             <td><?=date("d-m-Y", strtotime($lista['fecha_reg']));?></td>
 
                                           

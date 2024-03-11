@@ -557,4 +557,48 @@ class Reporte extends CI_Controller {
 			}
 		
 		}
+		public function cxp_vendedores(){
+			if(!$this->session->userdata('session'))redirect('login');
+			$hasta     = $this->input->post("hasta");
+			$desde     = $this->input->post("desde");
+			$data['desde'] = date('Y-m-d', strtotime($desde));
+			$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+		   //	$this->form_validation->set_rules('t_pago', 't_pago', 'required|callback_select_validate');
+			$this->form_validation->set_rules('hasta', 'Fecha hasta', 'required|min_length[1]');
+			$this->form_validation->set_rules('desde', 'Fecha Desde ', 'required|min_length[1]');
+	
+			if ($this->form_validation->run() == FALSE) {
+	
+					$data['descripcion'] = $this->session->userdata('unidad');
+					$data['rif'] 		 = $this->session->userdata('rif');
+					$data['vendedor']  = $this->Reporte_model->vendedor();    
+					$this->load->view('templates/header.php');
+					$this->load->view('templates/navigator.php');
+					$this->load->view('Reporte/cxp_vende/cxp_vende.php', $data);
+					$this->load->view('templates/footer.php');
+				} else {
+					$data['vendedor']=	$this->input->post("vendedor");
+					$data['descripcion'] = $this->session->userdata('unidad');
+					$data['rif'] 		 = $this->session->userdata('rif');
+	
+					$data['results'] 	 =	$this->Reporte_model->consultar_pxp_vende($data);
+					$data['results_2'] 	 =	$this->Reporte_model->consultar_pxp_vende3($data);
+					$data['desde'] = date('Y-m-d', strtotime($desde));
+					$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
+					$this->load->view('templates/header.php');
+					$this->load->view('templates/navigator.php');
+					$this->load->view('Reporte/cxp_vende/cxp_resil_vende.php', $data, );
+					$this->load->view('templates/footer.php');
+			}
+		
+		}
+		public function pagar_vendedores()
+		{
+			if(!$this->session->userdata('session')) {
+				redirect('login');
+			}
+			$data = $this->input->post();
+			$data = $this->Reporte_model->pagar_vendedores($data);
+			echo json_encode($data);
+		}
 }

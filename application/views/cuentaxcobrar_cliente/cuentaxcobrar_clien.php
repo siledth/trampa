@@ -48,7 +48,7 @@
                                                 <td><?= date("d-m-Y", strtotime($lista['fecha_crear'])); ?></td>
                                                 <td><?= $lista['estatus'] ?></td>
                                                 <td>
-                                                <?php if ( $lista['forma_pago'] == 2) : ?>
+                                                <?php if ( $lista['forma_pago'] >= 2) : ?>
                                                     <a class="button"
                                                         href="<?php echo base_url() ?>index.php/Mensualidades/verPago_cliente?id=<?php echo $lista['id']; ?>">
                                                         <i title="Ver Pago" class="fas fa-lg fa-fw fa-eye"
@@ -144,12 +144,12 @@
                         <div class="col-10"></div>
                    
                         <div class="form-group col-4">
-                            <label>Nombre Proveedor</label>
+                            <label>Nombre Cliente</label>
                             <input class="form-control" type="text" name="pies" id="pies" readonly>
                         </div>
                       
                         <div class="form-group col-3">
-                            <label>Rif del Proveedor</label>
+                            <label>Rif Cliente</label>
                             <input class="form-control" type="text" name="tarifa" id="tarifa" readonly>
                         </div>
                         <!-- <div class="form-group col-2">
@@ -165,6 +165,22 @@
                         <div class="form-group col-3">
                             <label>Deuda $</label>
                             <input class="form-control" type="text" name="canon" id="canon" readonly>
+                            <input class="form-control" type="hidden" name="forma_pago" id="forma_pago" readonly>
+                            <input class="form-control" type="hidden" name="id_vendedor" id="id_vendedor" readonly>
+
+                        </div>
+                        <div class="form-group col-3">
+                            <label>Cantidad a pagar $</label>
+                            <input class="form-control" type="text" id="cantidad_pagar_otra" name="cantidad_pagar_otra"
+                                onblur="calcular_diferen();validarmayorpy();">
+                        </div>
+                        <div class="form-group col-3">
+                            <label>Deuda restante $</label>
+                            <input class="form-control" type="text" id="total_otra" name="total_otra" readonly>
+                        </div>
+                        <div class="form-group col-3">
+                            <label>pago vendedor</label>
+                            <input class="form-control" type="text" id="pg_vendedor" name="pg_vendedor" readonly>
                         </div>
                         <!-- <div class="form-group col-3">
                             <label>Monto en Bs. F</label>
@@ -370,7 +386,7 @@
     </div>
 </div>
 
-<script src="<?= base_url() ?>/js/bien/guardar_fact.js"></script>
+<!-- <script src="<?= base_url() ?>/js/bien/guardar_fact.js"></script> -->
 <script src="<?= base_url() ?>/js/cxc_cliente/cxc_cliente.js"></script>
 <script src="<?= base_url() ?>/js/bien/numeroadelanto.js"></script>
 

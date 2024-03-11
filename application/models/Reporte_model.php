@@ -631,6 +631,73 @@ class Reporte_model extends CI_Model {
         }
     }
     
-    
+    public function vendedor(){         
+        $this->db->select('id_vendedor,rif_vendedor, nombre_vendedor');
+        $query = $this->db->get('public.vendedor');
+        return $query->result_array();
+    }
+    public function consultar_pxp_vende($data){
+       // print_r($data);die;
+        if ($data['vendedor'] == 0) {
+            $this->db->select("mc.id, mc.id_factura, mc.id_vendedor, mc.cantidad_pagar, mc.fecha_reg ,mc.estatus,v.nombre_vendedor, v.rif_vendedor");
+             $this->db->join('vendedor v', 'v.id_vendedor = mc.id_vendedor');
+            // $this->db->join('buque t', 't.matricula = m.matricula', 'left');
+            // $this->db->where('mc.tipo_pago', 4);
+            // $this->db->where('mc.forma_pago', 0);
+
+            $this->db->where('mc.fecha_reg >=', $data['desde']);
+            $this->db->where('mc.fecha_reg <=', $data['hasta']);
+            // $this->db->order_by('m.matricula');
+            $query = $this->db->get('public.detalle_pago_vendedores mc');
+            return $query->result_array();
+        }else{
+            $this->db->select("mc.id, mc.id_factura, mc.id_vendedor, mc.cantidad_pagar, mc.fecha_reg,mc.estatus, v.nombre_vendedor, v.rif_vendedor");
+            $this->db->join('vendedor v', 'v.id_vendedor = mc.id_vendedor');
+
+            // $this->db->join('buque t', 't.matricula = m.matricula', 'left');
+            $this->db->where('mc.id_vendedor', $data['vendedor']);
+            // $this->db->where('mc.tipo_pago', 4);
+            // $this->db->where('mc.forma_pago', 0);
+            $this->db->where('mc.fecha_reg >=', $data['desde']);
+            $this->db->where('mc.fecha_reg <=', $data['hasta']);
+            // $this->db->order_by('m.matricula');
+            $this->db->group_by('mc.id, mc.id_factura, mc.id_vendedor, mc.cantidad_pagar, mc.fecha_reg,mc.estatus, v.nombre_vendedor, v.rif_vendedor');
+            $query = $this->db->get('detalle_pago_vendedores mc');
+            return $query->result_array();
+        }
+    }
+    public function consultar_pxp_vende3($data){
+        if ($data['vendedor'] == 0) {
+            $this->db->select("sum(to_number(mc.cantidad_pagar,'999999999999D99')) as cantidad_pagar");
+                            //$this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+                            //$this->db->where('m.matricula', $data['matricula']);
+                            // $this->db->where('mc.tipo_pago', 4);
+                            $this->db->where('mc.estatus', 0);
+                            $this->db->where('mc.fecha_reg >=', $data['desde']);
+                            $this->db->where('mc.fecha_reg <=', $data['hasta']);
+                            $query = $this->db->get('detalle_pago_vendedores mc');
+                            return $query->row_array();
+        }else{
+            $this->db->select("sum(to_number(mc.cantidad_pagar,'999999999999D99')) as cantidad_pagar");
+           //$this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+            $this->db->where('mc.id_vendedor', $data['vendedor']);
+            $this->db->where('mc.estatus', 0);
+
+            // $this->db->where('mc.tipo_pago', 4);
+            // $this->db->where('mc.forma_pago', 0);
+            $this->db->where('mc.fecha_reg >=', $data['desde']);
+            $this->db->where('mc.fecha_reg <=', $data['hasta']);
+            $query = $this->db->get('detalle_pago_vendedores mc');
+            return $query->row_array();
+        }
+    }
+
+    public function pagar_vendedores($data)
+    {
+        $data1 = array('estatus' => '1');
+        $this->db->where('id', $data['id']);
+        $update = $this->db->update('detalle_pago_vendedores', $data1);
+        return true;
+    }
     
 }

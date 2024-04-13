@@ -547,9 +547,9 @@ class Reporte_model extends CI_Model {
     public function consultar_cxc_client($data){
         //print_r($data);die;
         if ($data['cliente'] == 1) {
-            $this->db->select("mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear");
-            // $this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
-            // $this->db->join('buque t', 't.matricula = m.matricula', 'left');
+            $this->db->select("mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, c.id_vendedor,v.nombre_vendedor");
+             $this->db->join('public.cliente c', 'c.id_cliente = mc.id_cliente');
+         $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
             $this->db->where('mc.tipo_pago', 4);
             $this->db->where('mc.forma_pago', 0);
 
@@ -559,9 +559,9 @@ class Reporte_model extends CI_Model {
             $query = $this->db->get('recibo mc');
             return $query->result_array();
         }else{
-            $this->db->select("mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear");
-            // $this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
-            // $this->db->join('buque t', 't.matricula = m.matricula', 'left');
+            $this->db->select("mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, c.id_vendedor,v.nombre_vendedor");
+            $this->db->join('public.cliente c', 'c.id_cliente = mc.id_cliente');
+            $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
             $this->db->where('mc.cedula', $data['cliente']);
             $this->db->where('mc.tipo_pago', 4);
             $this->db->where('mc.forma_pago', 0);

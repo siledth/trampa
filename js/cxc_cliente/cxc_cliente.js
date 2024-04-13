@@ -226,8 +226,10 @@ function calcular_diferen() { ///////////////este es el que hace el calclulo
 
 
 
-        var pag_vendedor =  cantidad_pagar_otra1 * 0.03;
-        var pag_vendedor2 = parseFloat(pag_vendedor).toFixed(2);
+        var pag_vendedor =  cantidad_pagar_otra1 * 0.16;
+        var pag_vende =  cantidad_pagar_otra1  - pag_vendedor //resultado quitando el 16 %
+        var pag_vende1 =  pag_vende  * 0.03;        ;
+        var pag_vendedor2 = parseFloat(pag_vende1).toFixed(2);
         var pag_vendedor3 = Intl.NumberFormat("de-DE").format(pag_vendedor2);
         $("#pg_vendedor").val(pag_vendedor3);
     

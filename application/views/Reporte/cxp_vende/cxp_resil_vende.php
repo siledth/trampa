@@ -34,6 +34,8 @@
                             class="table table-striped table-bordered display responsive nowrap" style="width:100%">
                             <thead class="h5 text-center">
                                 <tr>
+                                <th>Ref Factura</th>
+
                                     <th>Nombre Vendedor</th>
                                     <th>Rif</th>
                                     <th>Pagar $</th>
@@ -46,6 +48,8 @@
                                 <?php if($results != 0){ ?>
                                 <?php foreach($results as $result):?>
                                 <tr class="odd gradeX" style="text-align:center">
+                                <td><?=$result['id_factura']?></td>
+
                                     <td><?=$result['nombre_vendedor']?></td>
                                     <td><?=$result['rif_vendedor']?></td>
                                     <td><?=$result['cantidad_pagar']?> </td>

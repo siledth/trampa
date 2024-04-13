@@ -35,6 +35,8 @@
                                     <th>Rif</th>
                                     <th>Deuda $</th>
                                     <th>Fecha deuda</th>
+                                    <th>Vendedor</th>
+
                                 </tr>
                             </thead>
                             <tbody class="h5" style="color: black;">
@@ -45,6 +47,8 @@
                                             <td><?=$result['cedula']?></td>
                                             <td><?=$result['total_mas_iva']?> </td>
                                             <td><?=date("d/m/Y", strtotime($result['fecha_crear']));?> </td>
+                                            <td><?=$result['nombre_vendedor']?> </td>
+
                                    
                                     </tr>
                                     <?php endforeach;?>

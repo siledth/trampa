@@ -197,7 +197,7 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li><a href="<?= base_url() ?>index.php/Factura/compras">Registrar</a></li>
-                                    <li><a href="<?= base_url() ?>index.php/Factura/verRecibo">Ver </a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Factura/vercompra">Ver </a></li>
                                 </ul>
                             </li>
                         </ul>

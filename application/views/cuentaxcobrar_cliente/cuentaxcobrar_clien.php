@@ -182,28 +182,7 @@
                             <label>pago vendedor</label>
                             <input class="form-control" type="text" id="pg_vendedor" name="pg_vendedor" readonly>
                         </div>
-                        <!-- <div class="form-group col-3">
-                            <label>Monto en Bs. F</label>
-                            <input class="form-control" type="text" name="bs" id="bs" readonly>
-                        </div>
-                        <div class="form-group col-3">
-                            <label>Cantidad a pagar $</label>
-                            <input class="form-control" type="text" id="cantidad_pagar_otra" name="cantidad_pagar_otra"
-                                onblur="calcular_dol();">
-                        </div>
-                        <div class="form-group col-3">
-                            <label>Cantidad a pagar Bs. F</label>
-                            <input class="form-control" type="text" id="cantidad_pagar_bs" name="cantidad_pagar_bs"
-                                onkeypress="return valideKey(event);" readonly>
-                        </div>
-                        <div class="form-group col-3">
-                            <label>Cantidad restante $</label>
-                            <input class="form-control" type="text" id="total_otra" name="total_otra" readonly>
-                        </div>
-                        <div class="form-group col-3">
-                            <label>Cantidad restante Bs. F</label>
-                            <input class="form-control" type="text" id="total_bs_pag" name="total_bs_pag" readonly>
-                        </div> -->
+                       
                         <div class="col-3">
                             <label>Tipo de pago</label>
                             <select class="form-control" name="id_tipo_pago" id="id_tipo_pago" onclick="llenar_pago();">

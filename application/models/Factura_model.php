@@ -201,4 +201,39 @@
         $query = $this->db->get('deta_compra df');
         return $result = $query->result_array();
     }
+    
+    function consulta_compra(){
+        $this->db->select("f.*, p.nombre_proveedor");    
+        $this->db->join('public.proveedor p', 'p.id_proveedor = f.id_proveedor', 'left');
+
+        $query = $this->db->get('compras f');
+   
+        return $result = $query->result_array();
+
+    }
+    function ver_recibocompra($data){
+        //print_r($data);die;
+        $this->db->select("f.*,c.nombre_proveedor,c.rif_proveedor, e.id_status,                        
+        e.descripcion as estatus,
+      p.descripcion as tipo_p,
+                        ");
+        $this->db->join('estatus e', 'e.id_status = f.id_status');
+        $this->db->join('tipopago p', 'p.id_tipo_pago = f.tipo_pago');
+        $this->db->join('public.proveedor c', 'c.id_proveedor = f.id_proveedor');
+      //  $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
+        
+
+
+        $this->db->where('f.id',$data);
+        $query = $this->db->get('compras f');
+        return $result = $query->row_array();
+    }
+    function ver_recibo_tabla_compras($data){
+        //print_r($data);die;
+        $this->db->select("df.*,  p.descripcion as product");
+        $this->db->join('public.producto p', 'p.code_p = df.code1', 'left');
+        $this->db->where('df.id',$data);
+        $query = $this->db->get('public.deta_compra df');
+        return $result = $query->result_array();
+    }
 }

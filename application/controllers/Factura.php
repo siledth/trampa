@@ -607,5 +607,44 @@ class Factura extends CI_Controller {
         $this->load->view('compras/ver_compra', $data);
         $this->load->view('templates/footer.php');
     }
+    public function vercompra(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] = $this->session->userdata('rif');
+        $data['ver_proyectos'] = $this->Programacion_model->consultar_proyectos();
+        $data['time']=date("d-m-Y");
+        
+        $id_factura = $this->input->get('id');
+        $data['facturas'] 	= $this->Factura_model->consulta_compra();
+
+        
+        
+        $data['factura_ind'] = $this->Factura_model->ver_recibo($id_factura);
+        $data['factura_ind_tabla'] = $this->Factura_model->ver_recibo_tabla($id_factura);
+        
+        $this->load->view('templates/header.php');
+        
+        $this->load->view('templates/navigator.php');
+        $this->load->view('factura/ver_compras', $data);
+        $this->load->view('templates/footer.php');
+    }
+    public function ver_detalle_compra(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] = $this->session->userdata('rif');
+        $data['ver_proyectos'] = $this->Programacion_model->consultar_proyectos();
+        $data['time']=date("d-m-Y");
+        
+        $id_factura = $this->input->get('id');
+
+        $data['factura_ind'] = $this->Factura_model->ver_recibocompra($id_factura);
+        $data['factura_ind_tabla'] = $this->Factura_model->ver_recibo_tabla_compras($id_factura);
+        
+        $this->load->view('templates/header.php');
+        
+        $this->load->view('templates/navigator.php');
+        $this->load->view('factura/ver_detalle_compra2', $data);
+        $this->load->view('templates/footer.php');
+    }
 
 }

@@ -40,6 +40,8 @@
 
                                         <th width="5%" class="text-nowrap">Producto</th>
                                         <th width="5%" class="text-nowrap">Cantidad</th>
+                                       
+
                                       
                                   
                                       
@@ -52,7 +54,9 @@
                                     <td><?=$result['code1']?></td>
 
                                         <td><?=$result['descripcion']?></td>
-                                        <td><?=$result['total_sold']?></td>
+                                        <td><?=$result['total_sold']?></td> 
+                                  
+
                                      
                                     
                                       

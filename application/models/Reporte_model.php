@@ -525,15 +525,17 @@ class Reporte_model extends CI_Model {
     }
 
     public function consulta_venta($data){
-        $this->db->select('rc.code1, SUM(rc.cantidad) as total_sold,rc.fecha_reg, p.descripcion');
+        $this->db->select('rc.code1, SUM(rc.cantidad) as total_sold,rc.fecha_reg, rc.id_fact ,p.descripcion, re.forma_pago');
       
       //  $this->db->select("mc.id, mc.fecha_crear,t.code1, t.cantidad");
-      $this->db->join('public.producto p', 'p.code_p = rc.code1');      
-       
+      $this->db->join('public.producto p', 'p.code_p = rc.code1');    
+      $this->db->join('public.recibo re', 're.id = rc.id_fact');    
       //$this->db->join('public.deta_recibo t', 't.id_fact = mc.id');
         $this->db->where('rc.fecha_reg >=', $data['desde']);
-        $this->db->where('rc.fecha_reg <=', $data['hasta']);        
-        $this->db->group_by('rc.code1,p.descripcion, rc.fecha_reg');
+        $this->db->where('rc.fecha_reg <=', $data['hasta']);   
+        $this->db->where('re.forma_pago <', 5);        
+
+        $this->db->group_by('rc.code1,p.descripcion, rc.fecha_reg,rc.id_fact,re.forma_pago ');
        
       //  $this->db->group_by('mc.id, mc.fecha_crear,t.code1, t.cantidad');
         $query = $this->db->get('deta_recibo rc');

@@ -105,10 +105,16 @@
         return $result = $query->result_array();
     }
     function consulta_recibo(){
-        $this->db->select("f.*");    
-        $query = $this->db->get('recibo f');
-   
-        return $result = $query->result_array();
+        $this->db->select('m.*,e.descripcion as estatus');
+        $this->db->from('public.recibo m');  
+        //$this->db->join('proveedor b', 'b.id_proveedor = m.id_proveedor ');
+        $this->db->join('estatus e', 'e.id_status = m.forma_pago');
+        //$this->db->where('m.tipo_pago', 4);
+        // $this->db->where('m.forma_pago', 0);
+        $this->db->order_by("m.id", "asc");
+        $query = $this->db->get();
+        $resultado = $query->result_array();
+       return $resultado;
 
     }
     public function save_compra($acc_cargar,$dato1,$p_items){

@@ -551,7 +551,7 @@ class Reporte_model extends CI_Model {
         if ($data['cliente'] == 1) {
             $this->db->select("mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, c.id_vendedor,v.nombre_vendedor");
              $this->db->join('public.cliente c', 'c.id_cliente = mc.id_cliente');
-         $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
+            $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
             $this->db->where('mc.tipo_pago', 4);
             $this->db->where('mc.forma_pago', 0);
 
@@ -701,5 +701,43 @@ class Reporte_model extends CI_Model {
         $update = $this->db->update('detalle_pago_vendedores', $data1);
         return true;
     }
-    
+    public function consultar_cxc_client_abono($data){
+        //print_r($data);die;
+        if ($data['cliente'] == 1) {
+            $this->db->select(" MAX(mc.id) as id ,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, 
+            c.id_vendedor,v.nombre_vendedor, dt.deuda_restante,dt.id_factura, dt.id as id1");
+             $this->db->join('public.cliente c', 'c.id_cliente = mc.id_cliente');
+            $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
+            $this->db->join('public.detalle_pago_clientes dt', 'dt.id_factura = "mc.id');
+
+            $this->db->where('mc.tipo_pago', 4);
+            $this->db->where('mc.forma_pago', 3);
+
+            $this->db->where('mc.fecha_crear >=', $data['desde']);
+            $this->db->where('mc.fecha_crear <=', $data['hasta']);
+            $this->db->group_by('mc.id,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, 
+            c.id_vendedor,v.nombre_vendedor,dt.deuda_restante,dt.id_factura,dt.id');
+
+            // $this->db->order_by('m.matricula');
+            $query = $this->db->get('recibo mc');
+            return $query->result_array();
+        }else{
+            $this->db->select("  MAX(mc.id) as id,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente,
+             c.id_vendedor,v.nombre_vendedor,dt.deuda_restante , dt.id_factura,dt.id as id1");
+            $this->db->join('public.cliente c', 'c.id_cliente = mc.id_cliente');
+            $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
+            $this->db->join('public.detalle_pago_clientes dt', 'dt.id_factura = "mc.id');
+
+            $this->db->where('mc.cedula', $data['cliente']);
+            $this->db->where('mc.tipo_pago', 4);
+            $this->db->where('mc.forma_pago', 3);
+            $this->db->where('mc.fecha_crear >=', $data['desde']);
+            $this->db->where('mc.fecha_crear <=', $data['hasta']);
+            // $this->db->order_by('m.matricula');
+            $this->db->group_by('mc.id,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, 
+            c.id_vendedor,v.nombre_vendedor,dt.deuda_restante,dt.id_factura,dt.id');
+            $query = $this->db->get('recibo mc');
+            return $query->result_array();
+        }
+    }
 }

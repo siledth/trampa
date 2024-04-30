@@ -291,6 +291,24 @@ class Factura extends CI_Controller {
         $this->load->view('factura/ver_recb2', $data);
         $this->load->view('templates/footer.php');
     }
+    public function ver_reci2(){
+        if(!$this->session->userdata('session'))redirect('login');
+        $data['descripcion'] = $this->session->userdata('unidad');
+        $data['rif'] = $this->session->userdata('rif');
+        $data['ver_proyectos'] = $this->Programacion_model->consultar_proyectos();
+        $data['time']=date("d-m-Y");
+        
+        $id_factura = $this->input->get('id');
+
+        $data['factura_ind'] = $this->Factura_model->ver_recibo($id_factura);
+        $data['factura_ind_tabla'] = $this->Factura_model->ver_recibo_tabla($id_factura);
+        
+        $this->load->view('templates/header.php');
+        
+        $this->load->view('templates/navigator.php');
+        $this->load->view('factura/verecib3', $data);
+        $this->load->view('templates/footer.php');
+    }
 
     ///////////////////////TRANSITO///////////////////////////////
     public function transito(){		

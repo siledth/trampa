@@ -217,7 +217,7 @@
                         <a href="javascript:;">
                             <b class="caret"></b>
                             <i class="fas fa-calendar-alt fa-lg"></i>
-                            <span>Cuentas x Pagar clientes</span>
+                            <span>Compensar x Cobrar a clientes</span>
                         </a>
                         <ul class="sub-menu">
                             <li><a href="<?= base_url() ?>index.php/Mensualidades/cliente">Ver</a></li>
@@ -235,6 +235,7 @@
                                 <a href="javascript:;">
                                     <li><a href="<?= base_url() ?>index.php/Reporte/ventas_d">Ventas</a></li>
                                     <li><a href="<?= base_url() ?>index.php/Reporte/cxc_cliente">Cuentas por Cobrar / por Cliente</a></li>
+                                    <li><a href="<?= base_url() ?>index.php/Reporte/cxc_cliente_abonos">Cuentas por Cobrar / Clientes que abonaron</a></li>
                                     <li><a href="<?= base_url() ?>index.php/Reporte/prod_desp_client">Productos despachados a Cliente</a></li>
 
                                     <li><a href="<?= base_url() ?>index.php/Reporte/cxp_vendedores">Cxp vendedores</a></li>

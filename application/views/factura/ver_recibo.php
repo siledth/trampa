@@ -36,9 +36,18 @@
 
                                                     <td>
                                                         <a class="button" href="<?php echo base_url() ?>index.php/Factura/ver_reci?id=<?php echo $lista['id'];?>" >
-                                                            <i title="Ver" class="fas fa-lg fa-fw fa-list-alt" style="color: #00d41a;"></i>
+                                                            <i title="Ver" class="fas fa-lg fa-fw fa-list-alt" style="color: #00d41a;"></i> 
+
                                                         <a/>
-                                                        
+
+                                                        <a class="button" href="<?php echo base_url() ?>index.php/Factura/ver_reci2?id=<?php echo $lista['id'];?>" >
+                                                            <i title="Ver" class="fas fa-lg fa-fw fa-list-alt" style="color: #FF8000;"></i>
+                                                        <a/>
+                                                        <!-- <a class="button" href="<?php echo base_url() ?>index.php/Invoice/annul?id=<?php echo $lista['id'];?>" >
+                                                            <i title="anular" class="fas fa-lg fa-fw fa-list-alt" style="color: #00d41a;"></i>
+                                                        <a/> -->
+                                                        <a href="<?= site_url('Invoice/annul/'.$lista['id']) ?>">Anular</a>
+                                                       
                                                     </td>
                                                 </tr>
                                                 

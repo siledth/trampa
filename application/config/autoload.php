@@ -148,6 +148,7 @@ $autoload['model'] = array(
     'Vendedores_model',
     'Rutas_model',
     'Proveedor_model',
+    'Invoice_model',
 
 
 );

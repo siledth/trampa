@@ -59,22 +59,22 @@
                             <div class="row">
                                 <div class="form-group col-3">
 
-                                    <label>Ingrese Cantidad</label>
-                                    <input id="quantity" name="quantity" onkeypress="return valideKey(event);"
-                                        onblur="calculos_rendi_py();" class="form-control">
+                                    <!-- <label>Ingrese Cantidad</label> -->
+                                    <input id="quantity" name="quantity" type="hidden" onkeypress="return valideKey(event);"
+                                        class="form-control" value ="0">
                                 </div>
                                 <div class="form-group col-4">
 
-                                    <label>Ingrese Precio de Factuta</label>
-                                    <input id="price_purchase" name="price_purchase"
-                                        onkeypress="return valideKey(event);" onblur="calculos_rendi_py();"
-                                        class="form-control">
+                                    <!-- <label>Ingrese Precio de Factuta</label> -->
+                                    <input id="price_purchase" name="price_purchase" type="hidden"
+                                        onkeypress="return valideKey(event);"  
+                                        class="form-control" value ="0">
                                 </div>
                                 <div class="form-group col-3">
 
-                                    <label>Ingrese Precio de Venta</label>
-                                    <input id="price_sale" name="price_sale" onkeypress="return valideKey(event);"
-                                        onblur="calculos_rendi_py();" class="form-control">
+                                    <!-- <label>Ingrese Precio de Venta</label> -->
+                                    <input id="price_sale" name="price_sale"  type="hidden" onkeypress="return valideKey(event);"
+                                         class="form-control" value ="0">
                                 </div>
 
                             </div>
@@ -124,11 +124,11 @@
 
 
                                 <td class="center">
-                                    <a onclick="modal(<?php echo $data['id_producto'] ?>);" data-toggle="modal"
+                                    <!-- <a onclick="modal(<?php echo $data['id_producto'] ?>);" data-toggle="modal"
                                         data-target="#exampleModal" style="color: white">
                                         <i title="Agregar" class="fas fa-lg fa-fw fa-donate"
                                             style="color: darkgreen;"></i>
-                                    </a>
+                                    </a> -->
 
                                 </td>
                             </tr>
@@ -183,19 +183,19 @@
                                 <div class="form-group col-3">
                                     <label>Cantidad Ingresar</label>
                                     <input class="form-control" type="number" name="quantity2" id="quantity2"
-                                        onblur="calcular_stock();">
+                                    value="0">
                                 </div>
                                 <div class="form-group col-3">
                                     <label>Nueva Cantidad</label>
-                                    <input class="form-control" type="text" name="quantity3" id="quantity3" readonly>
+                                    <input class="form-control" type="text" name="quantity3" id="quantity3" readonly value ="0">
                                 </div>
                                 <div class="form-group col-3">
                                     <label>Precio de compra</label>
-                                    <input class="form-control" type="text" name="price_purchase1" id="price_purchase1">
+                                    <input class="form-control" type="text" name="price_purchase1" id="price_purchase1" value ="0">
                                 </div>
                                 <div class="form-group col-3">
                                     <label>Precio de venta</label>
-                                    <input class="form-control" type="text" id="price_sale1" name="price_sale1">
+                                    <input class="form-control" type="text" id="price_sale1" name="price_sale1" value ="0">
                                 </div>
 
 

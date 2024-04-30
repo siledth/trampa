@@ -35,9 +35,9 @@ function valideKey(evt) {
 function guardar_b(){
     var code_p = $("#code_p").val();
     var descripcion = $("#descripcion").val();
-    var quantity = $("#quantity").val();
-    var price_purchase = $("#price_purchase").val();
-    var price_sale = $("#price_sale").val();
+    var quantity = 0;
+    var price_purchase = 0;
+    var price_sale = 0;
 
 
 
@@ -75,21 +75,21 @@ function guardar_b(){
                 document.getElementById("descripcion").focus();
                 return false;
             }
-            if(quantity == ''){
-                alert("Debe ingresar Cantidad ")
-                document.getElementById("quantity").focus();
-                return false;
-            }
-            if(price_purchase == ''){
-                alert("Debe ingresar Precio de Compra ")
-                document.getElementById("price_purchase").focus();
-                return false;
-            }
-            if(price_sale == ''){
-                alert("Debe ingresar Precio de Venta ")
-                document.getElementById("price_sale").focus();
-                return false;
-            }
+            // if(quantity == ''){
+            //     alert("Debe ingresar Cantidad ")
+            //     document.getElementById("quantity").focus();
+            //     return false;
+            // }
+            // if(price_purchase == ''){
+            //     alert("Debe ingresar Precio de Compra ")
+            //     document.getElementById("price_purchase").focus();
+            //     return false;
+            // }
+            // if(price_sale == ''){
+            //     alert("Debe ingresar Precio de Venta ")
+            //     document.getElementById("price_sale").focus();
+            //     return false;
+            // }
          
             if (result.value == true) {
                 event.preventDefault();

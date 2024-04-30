@@ -549,7 +549,7 @@ class Reporte extends CI_Controller {
 					$data['rif'] 		 = $this->session->userdata('rif');
 	
 					$data['results'] 	 =	$this->Reporte_model->consultar_cxc_client_abono($data);
-					$data['results_2'] 	 =	$this->Reporte_model->consultar_cxc_client3($data);
+					$data['results_2'] 	 =	$this->Reporte_model->consultar_cxc_client_abono_deben($data);
 					$data['desde'] = date('Y-m-d', strtotime($desde));
 					$data['hasta'] = date('Y-m-d', strtotime($hasta)); 
 					$this->load->view('templates/header.php');

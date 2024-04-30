@@ -53,8 +53,7 @@
                                             <td><?=$result['nombre']?></td>
                                             <td><?=$result['cedula']?></td>
                                             <td><?=$result['id_factura']?></td>
-
-                                            <td><?=$result['deuda_restante']?> </td>
+                                            <td><?=$result['total']?> </td>
                                             <td><?=date("d/m/Y", strtotime($result['fecha_crear']));?> </td>
                                             <td><?=$result['nombre_vendedor']?> </td>
 

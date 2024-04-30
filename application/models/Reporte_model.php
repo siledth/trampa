@@ -705,10 +705,10 @@ class Reporte_model extends CI_Model {
         //print_r($data);die;
         if ($data['cliente'] == 1) {
             $this->db->select(" MAX(mc.id) as id ,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, 
-            c.id_vendedor,v.nombre_vendedor, dt.deuda_restante,dt.id_factura, dt.id as id1");
+            c.id_vendedor,v.nombre_vendedor, dt.total,dt.id_factura, dt.id as id1");
              $this->db->join('public.cliente c', 'c.id_cliente = mc.id_cliente');
             $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
-            $this->db->join('public.detalle_pago_clientes dt', 'dt.id_factura = "mc.id');
+            $this->db->join('public.clientes_abono_deben dt', 'dt.id_factura = "mc.id');
 
             $this->db->where('mc.tipo_pago', 4);
             $this->db->where('mc.forma_pago', 3);
@@ -716,17 +716,16 @@ class Reporte_model extends CI_Model {
             $this->db->where('mc.fecha_crear >=', $data['desde']);
             $this->db->where('mc.fecha_crear <=', $data['hasta']);
             $this->db->group_by('mc.id,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, 
-            c.id_vendedor,v.nombre_vendedor,dt.deuda_restante,dt.id_factura,dt.id');
-
+            c.id_vendedor,v.nombre_vendedor,dt.total,dt.id_factura,dt.id');
             // $this->db->order_by('m.matricula');
             $query = $this->db->get('recibo mc');
             return $query->result_array();
         }else{
             $this->db->select("  MAX(mc.id) as id,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente,
-             c.id_vendedor,v.nombre_vendedor,dt.deuda_restante , dt.id_factura,dt.id as id1");
+             c.id_vendedor,v.nombre_vendedor,dt.total , dt.id_factura,dt.id as id1");
             $this->db->join('public.cliente c', 'c.id_cliente = mc.id_cliente');
             $this->db->join('public.vendedor v', 'v.id_vendedor = c.id_vendedor');
-            $this->db->join('public.detalle_pago_clientes dt', 'dt.id_factura = "mc.id');
+            $this->db->join('public.clientes_abono_deben dt', 'dt.id_factura = "mc.id');
 
             $this->db->where('mc.cedula', $data['cliente']);
             $this->db->where('mc.tipo_pago', 4);
@@ -735,9 +734,32 @@ class Reporte_model extends CI_Model {
             $this->db->where('mc.fecha_crear <=', $data['hasta']);
             // $this->db->order_by('m.matricula');
             $this->db->group_by('mc.id,mc.nombre, mc.cedula,mc.total_mas_iva,mc.fecha_crear,mc.id_cliente, 
-            c.id_vendedor,v.nombre_vendedor,dt.deuda_restante,dt.id_factura,dt.id');
+            c.id_vendedor,v.nombre_vendedor,dt.total,dt.id_factura,dt.id');
             $query = $this->db->get('recibo mc');
             return $query->result_array();
+        }
+    }
+    public function consultar_cxc_client_abono_deben($data){
+        if ($data['cliente'] == 1) {
+            $this->db->select("sum(total) AS total_mas_iva");
+                            //$this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+                            //$this->db->where('m.matricula', $data['matricula']);
+                            // $this->db->where('mc.tipo_pago', 4);
+                            // $this->db->where('mc.forma_pago', 0);
+                            // $this->db->where('mc.fecha_crear >=', $data['desde']);
+                            // $this->db->where('mc.fecha_crear <=', $data['hasta']);
+                            $query = $this->db->get('clientes_abono_deben ');
+                            return $query->row_array();
+        }else{
+            $this->db->select("sum(total) AS total_mas_iva");
+           //$this->db->join('mensualidad m', 'm.id_mensualidad = mc.id_mensualidad', 'left');
+            // $this->db->where('mc.cedula', $data['cliente']);
+            // $this->db->where('mc.tipo_pago', 4);
+            // $this->db->where('mc.forma_pago', 0);
+            // $this->db->where('mc.fecha_crear >=', $data['desde']);
+            // $this->db->where('mc.fecha_crear <=', $data['hasta']);
+            $query = $this->db->get('clientes_abono_deben ');
+            return $query->row_array();
         }
     }
 }

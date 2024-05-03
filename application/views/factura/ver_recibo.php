@@ -46,8 +46,9 @@
                                                         <!-- <a class="button" href="<?php echo base_url() ?>index.php/Invoice/annul?id=<?php echo $lista['id'];?>" >
                                                             <i title="anular" class="fas fa-lg fa-fw fa-list-alt" style="color: #00d41a;"></i>
                                                         <a/> -->
+                                                        <?php if ($lista['forma_pago'] == 0) : ?>
                                                         <a href="<?= site_url('Invoice/annul/'.$lista['id']) ?>">Anular</a>
-                                                       
+                                                        <?php endif; ?>
                                                     </td>
                                                 </tr>
                                                 

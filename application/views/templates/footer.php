@@ -37,6 +37,18 @@
 
 <script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
 <script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
+
+
+  <script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+	<script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/buttons.bootstrap.min.js"></script>
+	<script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/buttons.flash.min.js"></script>
+	<script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/jszip.min.js"></script>
+	<script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/pdfmake.min.js"></script>
+	<script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/vfs_fonts.min.js"></script>
+	<script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/buttons.html5.min.js"></script>
+	<script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Buttons/js/buttons.print.min.js"></script>
+  <script src="<?= base_url() ?>Plantilla/admin/assets/js/demo/table-manage-buttons.demo.min.js"></script>
+
 <script src="<?= base_url() ?>Plantilla/admin/assets/plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>Plantilla/admin/assets/js/demo/table-manage-default.demo.min.js"></script>
 
@@ -57,20 +69,44 @@
 <script src="<?= base_url() ?>/js/organoente.js?<?= time() ?>"></script>
 <script src="<?= base_url() ?>/js/llamadoconcurso.js?<?= time() ?>"></script>
 <script src="<?= base_url() ?>/js/asnc.app.js?<?= time() ?>"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  var table = $('#data-table').DataTable({
+    dom: "Bfrtip",
+    buttons: [
+      {
+        extend: "pdf",
+        text: "Exportar a PDF",
+        orientation: 'landscape',
+        title: function() {
+          return 'Resuldado del LLamado a Concurso - ' + new Date().toLocaleString();
+        },
+        customize: function(doc) {
+          doc.pageMargins = [5, 10, 10, 10]; // left, top, right, bottom
+        }
+      }
+    ]
+  });
+});
 
+</script> 
 <script>
-        $(document).ready(function() {
-                App.init();
-                TableManageDefault.init();
-                TableManageAutofill.init();
-                FormPlugins.init();
-                Gallery.init();
-                Highlight.init();
-                var ubiAct = window.location + "";
-                var arrayURL = ubiAct.split("index.php");
-                ubiAct = arrayURL[1];
-                sncApp.cargarDatosDePagina(ubiAct);
-        });
+  $(document).ready(function() {
+    App.init();
+    TableManageButtons.init();
+    TableManageDefault.init();
+
+    
+
+    TableManageAutofill.init();
+    FormPlugins.init();
+    Gallery.init();
+    Highlight.init();
+    var ubiAct = window.location + "";
+    var arrayURL = ubiAct.split("index.php");
+    ubiAct = arrayURL[1];
+    SncApp.cargarDatosDePagina(ubiAct);
+  });
 </script>
 <!-- <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -30,14 +30,13 @@
                         </div>
                     </div>
                     <div class="col-11 ml-5">
-                        <table id="data-table-default"
-                            class="table table-striped table-bordered display responsive nowrap" style="width:100%">
+                        <table id="data-table"
+                            class="table table-striped table-bordered display responsive nowrap" data-order='[[ 1, "asc" ]]' style="width:100%">
                             <thead class="h5 text-center">
                                 <tr>
                                 <th>Ref Factura</th>
 
                                     <th>Nombre Vendedor</th>
-                                    <th>Rif</th>
                                     <th>Pagar $</th>
                                     <th>Fecha de pago</th>
                                     <th>Pagar</th>
@@ -51,7 +50,7 @@
                                 <td><?=$result['id_factura']?></td>
 
                                     <td><?=$result['nombre_vendedor']?></td>
-                                    <td><?=$result['rif_vendedor']?></td>
+                                   
                                     <td><?=$result['cantidad_pagar']?> </td>
                                     <td><?=date("d/m/Y", strtotime($result['fecha_reg']));?> </td>
 

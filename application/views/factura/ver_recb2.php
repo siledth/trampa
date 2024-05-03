@@ -69,7 +69,7 @@
                             </div>
                             <div class="table-responsive">
                                 <table id="target_req_acc" class="table table-bordered table-hover"
-                                    style="font-size:10px">
+                                    style="font-size:12px">
                                     <thead style="background:#e4e7e8;">
                                         <tr class="text-center">
                                             <th>Código</th>
@@ -176,7 +176,7 @@
                             <div class="table-responsive">
 
                                 <table id="target_req_acc" class="table table-bordered table-hover"
-                                    style="font-size:10px">
+                                    style="font-size:12px">
                                     <thead style="background:#e4e7e8;">
                                         <tr class="text-center">
                                             <th>Código</th>

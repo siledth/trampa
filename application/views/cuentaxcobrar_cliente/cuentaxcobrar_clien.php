@@ -164,7 +164,7 @@
                         </div>
                         <div class="form-group col-3">
                             <label>Deuda $</label>
-                            <input class="form-control" type="text" name="canon" id="canon" readonly>
+                            <input class="form-control" type="text" name="canon" id="canon" >
                             <input class="form-control" type="hidden" name="forma_pago" id="forma_pago" readonly>
                             <input class="form-control" type="hidden" name="id_vendedor" id="id_vendedor" readonly>
 

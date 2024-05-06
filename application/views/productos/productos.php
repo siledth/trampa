@@ -124,11 +124,11 @@
 
 
                                 <td class="center">
-                                    <!-- <a onclick="modal(<?php echo $data['id_producto'] ?>);" data-toggle="modal"
+                                    <a onclick="modal(<?php echo $data['id_producto'] ?>);" data-toggle="modal"
                                         data-target="#exampleModal" style="color: white">
                                         <i title="Agregar" class="fas fa-lg fa-fw fa-donate"
                                             style="color: darkgreen;"></i>
-                                    </a> -->
+                                    </a>
 
                                 </td>
                             </tr>
@@ -183,7 +183,7 @@
                                 <div class="form-group col-3">
                                     <label>Cantidad Ingresar</label>
                                     <input class="form-control" type="number" name="quantity2" id="quantity2"
-                                    value="0">
+                                    value="0" readonly>
                                 </div>
                                 <div class="form-group col-3">
                                     <label>Nueva Cantidad</label>

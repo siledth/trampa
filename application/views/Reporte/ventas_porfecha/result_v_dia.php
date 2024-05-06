@@ -33,13 +33,15 @@
                                 <h4> Reporte Ventas Rango de Fecha</h4>
                             </div>
 
-                            <table id="data-table-default" class="table table-striped table-bordered">
+                            <table id="data-table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                    <th width="5%" class="text-nowrap">SKU</th>
+                                    <th width="15%" class="text-nowrap">SKU</th>
 
-                                        <th width="5%" class="text-nowrap">Producto</th>
-                                        <th width="5%" class="text-nowrap">Cantidad</th>
+                                        <th width="15%" class="text-nowrap">Producto</th>
+                                        <th width="15%" class="text-nowrap">Cantidad</th>
+                                        <th width="15%" class="text-nowrap">N factura</th>
+
                                        
 
                                       
@@ -54,7 +56,9 @@
                                     <td><?=$result['code1']?></td>
 
                                         <td><?=$result['descripcion']?></td>
-                                        <td><?=$result['total_sold']?></td> 
+                                        <td><?=$result['total_sold']?></td>  
+                                        <td><?=$result['nro_factura']?></td> 
+
                                   
 
                                      

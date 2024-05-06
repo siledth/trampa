@@ -79,7 +79,7 @@ $(document).ready(function() {
         text: "Exportar a PDF",
         orientation: 'landscape',
         title: function() {
-          return 'Resuldado del LLamado a Concurso - ' + new Date().toLocaleString();
+          return 'Reporte -Dia ' + new Date().toLocaleString();
         },
         customize: function(doc) {
           doc.pageMargins = [5, 10, 10, 10]; // left, top, right, bottom

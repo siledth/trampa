@@ -94,7 +94,7 @@
             <div class="panel panel-inverse">
                 <div class="panel-heading"></div>
                 <div class="table-responsive">
-                    <table id="data-table-default" data-order='[[ 0, "desc" ]]'
+                    <table id="data-table" data-order='[[ 0, "asc" ]]'
                         class="table table-bordered table-hover">
                         <thead style="background:#01cdb2">
                             <tr style="text-align:center">

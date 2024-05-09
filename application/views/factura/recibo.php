@@ -162,7 +162,7 @@
                                         <label>Seleccione Producto <b title="Campo Obligatorio"
                                                 style="color:red">*</b></label>
                                         <select style="width: 100%;" id="tarifa" name="tarifa"
-                                            onchange="calcular_bienes();" class="form-control">
+                                            onchange="calcular_bienes(); checkStock();" class="form-control">
                                             <option value="0">Seleccione</option>
                                             <?php foreach ($tarifa as $data): ?>
                                             <option
@@ -172,6 +172,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-2">
+
                                         <label style="color:red">Existencia</label>
                                         <input id="stock" name="stock" onblur="calcular_bienes();" class="form-control "
                                             readonly>
@@ -310,3 +311,4 @@ function valideKey(evt) {
     }
 }
 </script>
+

@@ -103,7 +103,7 @@ class Productos_model extends CI_Model
         $x = $this->db->insert('mov_prod',$data1);
         //aca modifique
         $data1 = array(
-                        'quantity' => $data['quantity3'],
+                       // 'quantity' => $data['quantity3'],
                         'price_purchase' => $data['price_purchase1'],
                         'price_sale' => $data['price_sale1'],
                     );

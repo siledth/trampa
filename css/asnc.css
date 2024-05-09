@@ -42,3 +42,8 @@ hr {
     border-radius: 20px;
     transition: 0.4s ease;
   } 
+
+ 
+ .invalid-input {
+    background-color: #ffff00; /* Yellow background */
+  }

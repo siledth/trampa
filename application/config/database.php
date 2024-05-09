@@ -79,6 +79,11 @@ $db['default'] = array(
 	'username' => 'postgres',
 	'password' => '1234',
 	'database' => 'trampa',
+
+	// 'database' => 'trampa03052024',//trampa06052024
+	//'database' => 'trampa06052024',//trampa06052024
+	//'database' => '07052024trampa',//trampa06052024
+
 	'dbdriver' => 'postgre',
 	'port'	   => '5432',
 	'dbprefix' => '',

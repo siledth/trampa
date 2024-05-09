@@ -107,3 +107,26 @@ function guardar_bien(){
         }
     });
 }
+
+const stockInput = document.getElementById('stock');
+  stockInput.addEventListener('blur', checkStock);
+
+  function checkStock() {
+    const stockValue = parseInt(stockInput.value, 10);
+    if (stockValue <= 0) {
+        swal.fire({
+            title: 'El stock actual es  es menor  o igual a cero (0)',
+            type: 'warning',
+            showCancelButton: false,
+            confirmButtonColor: '#ffff00',
+            confirmButtonText: 'Ok'
+        }).then((result) => {
+            if (result.value == true) {
+            }
+        });
+        stockInput.ariaInvalid = 'true';
+    } else {
+      stockInput.setCustomValidity('');
+      stockInput.ariaInvalid = 'false';
+    }
+  }

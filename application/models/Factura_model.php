@@ -148,7 +148,6 @@
            'tipo_pago' => $dato1['tipo_pago'],  
            'forma_pago' => $dato1['forma_pago'],    
 
-
     
         );
         $quers =$this->db->insert("public.compras", $data1);

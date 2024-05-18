@@ -31,6 +31,8 @@
                         <table id="data-table-default" class="table table-striped table-bordered display responsive nowrap" style="width:100%">
                             <thead class="h5 text-center">
                                 <tr>
+                                <th>N factura</th>
+
                                     <th>Nombre Cliente</th>
                                     <th>Rif</th>
                                     <th>Deuda $</th>
@@ -43,7 +45,9 @@
                                 <?php if($results != 0){ ?>
                                     <?php foreach($results as $result):?>
                                         <tr class="odd gradeX" style="text-align:center">
-                                            <td><?=$result['nombre']?></td>
+                                        <td><?=$result['id']?></td>
+                                            
+                                        <td><?=$result['nombre']?></td>
                                             <td><?=$result['cedula']?></td>
                                             <td><?=$result['total_mas_iva']?> </td>
                                             <td><?=date("d/m/Y", strtotime($result['fecha_crear']));?> </td>
